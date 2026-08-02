@@ -92,12 +92,13 @@ export default function EdNav() {
         aria-label="Primary"
         className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-6 sm:px-10"
       >
-        {/* The name stays in the DOM at every width so the link keeps its
-            accessible name; below sm only the monogram is drawn. */}
-        <a href="#top" className={`flex items-center gap-2.5 transition-colors ${tone}`}>
+        {/* Mark only. The name stays in the DOM but visually hidden, so the
+            link keeps its accessible name without a duplicate aria-label that
+            could drift from the copy in data/content.ts. */}
+        <a href="#top" className={`flex items-center transition-colors ${tone}`}>
           {/* The mark is wider than it is tall, so it is sized by height. */}
           <BwMark className="h-9 w-auto shrink-0" />
-          <span className="ed-display text-2xl max-sm:sr-only">{nav.brand}</span>
+          <span className="sr-only">{nav.brand}</span>
         </a>
 
         <ul className="flex flex-1 items-center gap-5 text-xs sm:justify-end sm:gap-7 sm:text-sm">
