@@ -26,7 +26,7 @@ export default function EdHero() {
         className="absolute inset-x-0 top-0 -z-10 h-[46svh] [mask-image:linear-gradient(to_bottom,black_52%,transparent_96%)] [-webkit-mask-image:linear-gradient(to_bottom,black_52%,transparent_96%)] lg:inset-y-0 lg:right-0 lg:left-auto lg:h-auto lg:w-[54%] lg:[mask-image:linear-gradient(to_right,transparent_2%,black_46%)] lg:[-webkit-mask-image:linear-gradient(to_right,transparent_2%,black_46%)]"
       >
         <Image
-          src="/bob-hero.jpg"
+          src="/bob-hero.webp"
           alt={hero.portrait.alt}
           fill
           priority

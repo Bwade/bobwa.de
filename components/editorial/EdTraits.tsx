@@ -50,7 +50,7 @@ export default function EdTraits() {
 
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <Image
-          src="/bob-mono.jpg"
+          src="/bob-mono.webp"
           alt={hero.portrait.alt}
           fill
           sizes="100vw"
