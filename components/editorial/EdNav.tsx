@@ -95,7 +95,8 @@ export default function EdNav() {
         {/* The name stays in the DOM at every width so the link keeps its
             accessible name; below sm only the monogram is drawn. */}
         <a href="#top" className={`flex items-center gap-2.5 transition-colors ${tone}`}>
-          <BwMark className="size-9 shrink-0" />
+          {/* The mark is wider than it is tall, so it is sized by height. */}
+          <BwMark className="h-9 w-auto shrink-0" />
           <span className="ed-display text-2xl max-sm:sr-only">{nav.brand}</span>
         </a>
 

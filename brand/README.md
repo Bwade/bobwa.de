@@ -1,7 +1,24 @@
 # bw monogram
 
-The mark is a lowercase `bw`: a stem with a bowl that closes back on the stem,
-and a `w` drawn as a true zigzag rather than two arches. Black and white only.
+A ligature of `b` and `w`: the bowl of the b flows straight into the first
+stroke of the w, so the two letters share an edge rather than sitting side by
+side. Black and white only.
+
+## Regenerating
+
+Everything here is generated from the source render of the mark, so the
+geometry is defined in exactly one place:
+
+```sh
+# Only needed for the lockups, which set the name in Newsreader.
+curl -sL 'https://github.com/google/fonts/raw/main/ofl/newsreader/Newsreader%5Bopsz,wght%5D.ttf' -o /tmp/Newsreader.ttf
+
+python3 scripts/build_brand.py path/to/bw-render.jpeg /tmp
+```
+
+That writes every file below, plus `public/icon.svg`,
+`public/apple-touch-icon.png` and `lib/brand-mark.ts`. Do not hand-edit any of
+them; change the source or the script and re-run.
 
 ## Files
 
@@ -15,41 +32,33 @@ and a `w` drawn as a true zigzag rather than two arches. Black and white only.
 | `bw-lockup-stacked-*.svg`       | Mark over the name. For square-ish space: avatars, letterhead.            |
 | `bw-*-512.png`, `bw-*-1024.png` | Raster exports, transparent where the mark stands alone.                  |
 
-`public/icon.svg` and `public/apple-touch-icon.png` are generated from
-`bw-tile-dark.svg`. Change the mark here first, then re-export those.
+## How the trace works
 
-The lockups have "Bob Wade" converted to outlines, so they carry no font
-dependency and render correctly for anyone without Newsreader installed. The
-tradeoff is that the text is no longer editable as text: to change the name or
-the setting, re-run `scripts/build_lockups.py` rather than editing the SVG.
+The source is a lit 3D render, not flat artwork, so the script cannot simply
+threshold it:
 
-The site nav does **not** use these files. It inlines the mark as a React
-component in `components/icons.tsx` so it inherits `currentColor` and inverts
-as the bar crosses light and dark panels, with the name kept as live text. Any
-change to the geometry has to be made in both places.
+- Only the bright top face is the true silhouette. The extruded side faces sit
+  at mid grey and would fatten the outline, so the threshold is set above them.
+- The generator's sparkle watermark peaks at 97, well under that threshold, so
+  it drops out on its own.
+- JPEG compression leaves noise along the edges that a tracer reproduces
+  faithfully as ragged diagonals. The image is upsampled and then blurred
+  _before_ thresholding. A symmetric blur leaves the 50% crossing where it was,
+  so this smooths the contour without moving the edge.
 
-## Geometry
+If you ever get a cleaner source (flat vector, or a PNG with no lighting), use
+it: the trace is a reconstruction, and a real vector beats it.
 
-Everything is one shared path set in a 103 x 101 box:
+## Lockups
 
-```
-stem   M 16 0 L 16 92
-bowl   M 16 46 C 58 46 58 92 16 92
-w      M 70 46 L 79 92 L 90 64 L 101 92 L 110 46
-```
+The name is converted to outlines, so the files carry no font dependency and
+render correctly for anyone without Newsreader installed. The tradeoff is that
+the text is no longer editable as text, which is what the build script is for.
 
-Drawn as strokes, not filled outlines, at `stroke-width: 9` with round caps and
-joins. The weight is deliberate: a hairline version of this mark disappears at
-16px, so it is set heavy enough to survive a favicon. To restyle, change the
-stroke and re-export rather than editing the paths.
+## The nav does not use these files
 
-To convert the strokes to filled outlines (some vendors require it), open a
-copy in a vector editor and apply Outline Stroke. Keep the stroked version as
-the source, since it stays editable.
-
-## Re-exporting
-
-```sh
-rsvg-convert -w 1024 bw-monogram-black.svg -o bw-monogram-black-1024.png
-rsvg-convert -w 180 -h 180 bw-tile-dark.svg -o ../public/apple-touch-icon.png
-```
+`components/icons.tsx` inlines the mark from `lib/brand-mark.ts` so it inherits
+`currentColor` and inverts as the bar crosses light and dark panels, which an
+`<img>` cannot do. The name beside it stays live text rather than artwork. Both
+that file and everything here come from the same generator, so they cannot
+drift.
