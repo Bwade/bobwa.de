@@ -43,7 +43,7 @@ export default function Home() {
 
       <script
         type="application/ld+json"
-        // Serialized from a local literal. no user input reaches this.
+        // Serialized from a local literal, so no user input reaches this.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
     </>

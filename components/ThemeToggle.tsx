@@ -5,7 +5,7 @@ import { Moon, Sun } from 'lucide-react';
 
 /**
  * Deliberately stateless. The inline script in layout.tsx already put the right
- * class on <html> before first paint, and the sun/moon swap is pure CSS. so
+ * class on <html> before first paint, and the sun/moon swap is pure CSS, so
  * there is no React state to get out of sync or to mismatch during hydration.
  */
 export default function ThemeToggle() {

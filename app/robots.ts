@@ -9,5 +9,5 @@ export default function robots(): MetadataRoute.Robots {
   };
 }
 
-// Required by `output: export`. render this once at build time.
+// Required by `output: export`. Render this once at build time.
 export const dynamic = 'force-static';

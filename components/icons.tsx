@@ -6,7 +6,7 @@ export type IconProps = React.SVGProps<SVGSVGElement> & {
 };
 
 /* lucide-react 1.x dropped brand icons, so the two we need are inlined here as
-   filled marks. They ignore `strokeWidth`. that's expected for brand logos. */
+   filled marks. They ignore `strokeWidth`, which is expected for brand logos. */
 
 function LinkedinMark(props: IconProps) {
   return (
