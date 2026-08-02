@@ -54,7 +54,7 @@ export const content = {
      * Set to null to remove Google Analytics entirely; Vercel Web Analytics is
      * independent of this and keeps running either way.
      */
-    gaMeasurementId: 'G-W1KNWFDXGV' as string | null,
+    gaMeasurementId: 'G-5VGLSB2VFN' as string | null,
   },
 
   /**
