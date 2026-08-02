@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Dark mode is class-driven (set on <html> by the no-flash script in layout.tsx)
    so the toggle can override the system preference. */

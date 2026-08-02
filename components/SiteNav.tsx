@@ -50,7 +50,7 @@ export default function SiteNav() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-paper/85 backdrop-blur-md transition-colors duration-300 ${
+      className={`bg-paper/85 sticky top-0 z-50 border-b backdrop-blur-md transition-colors duration-300 ${
         scrolled ? 'border-rule' : 'border-transparent'
       }`}
     >
@@ -58,10 +58,7 @@ export default function SiteNav() {
         aria-label="Primary"
         className="mx-auto flex h-16 max-w-5xl items-center gap-4 px-5 sm:px-8"
       >
-        <a
-          href="#top"
-          className="hidden font-serif text-lg tracking-tight text-ink sm:block"
-        >
+        <a href="#top" className="text-ink hidden font-serif text-lg tracking-tight sm:block">
           {nav.brand}
         </a>
 
@@ -81,7 +78,7 @@ export default function SiteNav() {
                   {link.label}
                   <span
                     aria-hidden="true"
-                    className={`absolute -bottom-0.5 left-0 h-px w-full origin-left bg-accent transition-transform duration-300 ${
+                    className={`bg-accent absolute -bottom-0.5 left-0 h-px w-full origin-left transition-transform duration-300 ${
                       isActive ? 'scale-x-100' : 'scale-x-0'
                     }`}
                   />

@@ -6,30 +6,32 @@ import TrackedLink from './TrackedLink';
 export default function Work() {
   return (
     <Section id="work" eyebrow={content.work.heading}>
-      <ul className="border-b border-rule">
+      <ul className="border-rule border-b">
         {content.work.items.map((item) => {
-          const linked = Boolean(item.href);
+          // Bind to a local so TypeScript narrows it inside the JSX below.
+          // `Boolean(item.href)` would not narrow, and would need a cast.
+          const href = item.href ?? null;
 
           const body = (
             <div className="grid gap-x-10 gap-y-3 py-7 sm:grid-cols-[minmax(0,13rem)_1fr] sm:py-8">
-              <h3 className="flex items-start gap-1.5 font-serif text-xl tracking-tight text-ink transition-colors group-hover:text-accent sm:text-2xl">
+              <h3 className="text-ink group-hover:text-accent flex items-start gap-1.5 font-serif text-xl tracking-tight transition-colors sm:text-2xl">
                 {item.name}
-                {linked && (
+                {href && (
                   <ArrowUpRight
                     aria-hidden="true"
-                    className="mt-0.5 size-4 shrink-0 text-ink-faint transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                    className="text-ink-faint group-hover:text-accent mt-0.5 size-4 shrink-0 transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     strokeWidth={1.75}
                   />
                 )}
               </h3>
 
               <div>
-                <p className="max-w-prose leading-relaxed text-ink-muted">{item.description}</p>
+                <p className="text-ink-muted max-w-prose leading-relaxed">{item.description}</p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {item.tags.map((tag) => (
                     <li
                       key={tag}
-                      className="rounded-full border border-rule px-2.5 py-1 text-xs tracking-wide text-ink-faint"
+                      className="border-rule text-ink-faint rounded-full border px-2.5 py-1 text-xs tracking-wide"
                     >
                       {tag}
                     </li>
@@ -40,12 +42,12 @@ export default function Work() {
           );
 
           return (
-            <li key={item.name} className="border-t border-rule">
-              {linked ? (
+            <li key={item.name} className="border-rule border-t">
+              {href ? (
                 <TrackedLink
                   event="project_click"
                   eventProps={{ project: item.name }}
-                  href={item.href as string}
+                  href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group block"

@@ -13,7 +13,7 @@ function CompactList({
 }) {
   return (
     <div>
-      <h3 className="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-ink-faint">
+      <h3 className="text-ink-faint text-[0.7rem] font-medium tracking-[0.2em] uppercase">
         {label}
       </h3>
       <ul className="mt-4 space-y-3">
@@ -32,32 +32,32 @@ function CompactList({
 export default function Experience() {
   return (
     <Section id="experience" eyebrow={experience.heading}>
-      <ol className="border-b border-rule">
+      <ol className="border-rule border-b">
         {experience.roles.map((role) => (
           <li
             key={role.company + role.title}
-            className="grid gap-x-10 gap-y-4 border-t border-rule py-9 sm:grid-cols-[minmax(0,13rem)_1fr] sm:py-11"
+            className="border-rule grid gap-x-10 gap-y-4 border-t py-9 sm:grid-cols-[minmax(0,13rem)_1fr] sm:py-11"
           >
             {/* Left rail: company and when. Sticks while the bullets scroll past. */}
             <div className="sm:sticky sm:top-24 sm:self-start">
-              <h3 className="font-serif text-xl tracking-tight text-ink sm:text-2xl">
+              <h3 className="text-ink font-serif text-xl tracking-tight sm:text-2xl">
                 {role.company}
               </h3>
-              <p className="mt-1.5 text-sm text-ink-faint">{role.dates}</p>
-              {role.location && <p className="text-sm text-ink-faint">{role.location}</p>}
+              <p className="text-ink-faint mt-1.5 text-sm">{role.dates}</p>
+              {role.location && <p className="text-ink-faint text-sm">{role.location}</p>}
             </div>
 
             <div>
-              <p className="font-medium leading-snug text-ink">{role.title}</p>
+              <p className="text-ink leading-snug font-medium">{role.title}</p>
 
               {role.summary && (
-                <p className="mt-3 max-w-prose leading-relaxed text-ink-muted">{role.summary}</p>
+                <p className="text-ink-muted mt-3 max-w-prose leading-relaxed">{role.summary}</p>
               )}
 
               {role.groups?.map((group) => (
                 <div key={group.label} className="mt-6">
                   {group.label && (
-                    <h4 className="text-[0.7rem] font-medium uppercase tracking-[0.16em] text-accent">
+                    <h4 className="text-accent text-[0.7rem] font-medium tracking-[0.16em] uppercase">
                       {group.label}
                     </h4>
                   )}
@@ -65,7 +65,7 @@ export default function Experience() {
                     {group.bullets.map((bullet) => (
                       <li
                         key={bullet}
-                        className="relative max-w-prose pl-5 leading-relaxed text-ink-muted before:absolute before:left-0 before:top-[0.7em] before:h-px before:w-2.5 before:bg-rule-strong"
+                        className="text-ink-muted before:bg-rule-strong relative max-w-prose pl-5 leading-relaxed before:absolute before:top-[0.7em] before:left-0 before:h-px before:w-2.5"
                       >
                         {bullet}
                       </li>
@@ -87,15 +87,15 @@ export default function Experience() {
         />
       </div>
 
-      <div className="mt-16 border-t border-rule pt-10">
-        <h3 className="text-[0.7rem] font-medium uppercase tracking-[0.2em] text-ink-faint">
+      <div className="border-rule mt-16 border-t pt-10">
+        <h3 className="text-ink-faint text-[0.7rem] font-medium tracking-[0.2em] uppercase">
           {toolkit.heading}
         </h3>
         <dl className="mt-6 grid gap-x-10 gap-y-6 sm:grid-cols-2">
           {toolkit.groups.map((group) => (
             <div key={group.label} className="grid gap-1 sm:grid-cols-[minmax(0,10rem)_1fr]">
-              <dt className="text-sm text-ink">{group.label}</dt>
-              <dd className="text-sm leading-relaxed text-ink-muted">{group.items.join(', ')}</dd>
+              <dt className="text-ink text-sm">{group.label}</dt>
+              <dd className="text-ink-muted text-sm leading-relaxed">{group.items.join(', ')}</dd>
             </div>
           ))}
         </dl>

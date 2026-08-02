@@ -18,9 +18,15 @@ Open http://localhost:3000.
 Other commands:
 
 ```bash
-npm run build   # static export into ./out
-npm run lint    # eslint
+npm run build         # static export into ./out
+npm run typecheck     # tsc --noEmit
+npm run lint          # eslint
+npm run format        # prettier --write .
+npm run verify        # typecheck + lint + format check + build, same as CI
 ```
+
+`npm run verify` is what CI runs on every push and pull request. Run it before
+pushing and you will not be surprised by a red check.
 
 `npm run build` writes plain HTML, CSS, and JS to `out/`. You can preview that
 output with any static file server, for example `npx serve out`.
@@ -49,7 +55,8 @@ A few notes:
 
 ## Where to drop the resume PDFs
 
-Put both files in [`public/`](public/), named exactly:
+Put both files in [`public/`](public/), named exactly. The designed version is
+already committed; the ATS one is not:
 
 | File                         | Linked from            |
 | ---------------------------- | ---------------------- |
@@ -65,13 +72,13 @@ To use different filenames, update `hero.primaryCta.href` and
 
 ## Assets you can swap
 
-| File              | What it is                    | Notes                                                         |
-| ----------------- | ----------------------------- | ------------------------------------------------------------- |
-| `public/og.png`      | Social share card, 1200 x 630 | Generated placeholder. Replace with a designed card, same name and size.       |
-| `public/icon.svg`    | Favicon, a "BW" monogram      | Placeholder. Replace with real artwork if you want.                            |
-| `public/bob-wade.jpg`| Hero portrait, 4:5            | Regraded LinkedIn headshot. Replace the file to swap it, or set `src` to null. |
+| File                  | What it is                    | Notes                                                                          |
+| --------------------- | ----------------------------- | ------------------------------------------------------------------------------ |
+| `public/og.png`       | Social share card, 1200 x 630 | Generated placeholder. Replace with a designed card, same name and size.       |
+| `public/icon.svg`     | Favicon, a "BW" monogram      | Placeholder. Replace with real artwork if you want.                            |
+| `public/bob-wade.jpg` | Hero portrait, 4:5            | Regraded LinkedIn headshot. Replace the file to swap it, or set `src` to null. |
 
-Both are referenced by path, so replacing the file is the whole job.
+All three are referenced by path, so replacing the file is the whole job.
 
 ## Deploy to Vercel (free tier)
 
@@ -102,10 +109,15 @@ If you are starting from a fresh Vercel project and want to attach a domain:
 
 1. In the Vercel project, open **Settings > Domains** and add the domain, for
    example `bobwa.de`. Add `www.bobwa.de` too if you want the www redirect.
-2. Vercel shows the DNS records it wants. For a domain whose DNS lives in
-   Route 53, that is normally:
-   - apex `bobwa.de` to an `A` record pointing at `76.76.21.21`
-   - `www.bobwa.de` to a `CNAME` pointing at the value Vercel shows you
+2. Vercel shows the DNS records it wants. Use the values it gives you rather
+   than any hardcoded here, because Vercel has changed them and issues a
+   per-domain CNAME target. For reference, `bobwa.de` currently uses:
+   - apex `A` records pointing at `216.198.79.1` and `64.29.17.1`
+   - `www` `CNAME` pointing at a per-domain `*.vercel-dns-017.com` target
+
+   `vercel domains verify <domain>` tells you whether the current records are
+   valid and whether Vercel would prefer different ones.
+
 3. Add those records in the Route 53 hosted zone for the domain. Leave the
    existing `MX`, `TXT`, and `NS` records alone. Touching the `MX` records will
    break email for the domain.
@@ -129,14 +141,14 @@ The `EventMap` type there is the single source of truth: event names are
 autocompleted and property shapes are checked at compile time, so a typo is a
 build error rather than a silently missing metric.
 
-| Event              | Fires when                          | Properties                                    |
-| ------------------ | ----------------------------------- | --------------------------------------------- |
-| `resume_download`  | Either résumé link is clicked       | `variant: designed \| ats`, `location`         |
-| `email_click`      | Any mailto link is clicked          | `location: hero \| footer`                     |
-| `social_click`     | LinkedIn or GitHub is clicked       | `network`, `location`                          |
-| `project_click`    | A Selected work item is clicked     | `project`                                      |
-| `theme_change`     | The dark mode toggle is used        | `theme: dark \| light`                         |
-| `section_view`     | A section scrolls into view         | `section`                                      |
+| Event             | Fires when                      | Properties                             |
+| ----------------- | ------------------------------- | -------------------------------------- |
+| `resume_download` | Either résumé link is clicked   | `variant: designed \| ats`, `location` |
+| `email_click`     | Any mailto link is clicked      | `location: hero \| footer`             |
+| `social_click`    | LinkedIn or GitHub is clicked   | `network`, `location`                  |
+| `project_click`   | A Selected work item is clicked | `project`                              |
+| `theme_change`    | The dark mode toggle is used    | `theme: dark \| light`                 |
+| `section_view`    | A section scrolls into view     | `section`                              |
 
 `section_view` fires at most once per section per page load, so the numbers read
 as "how far down did people get" rather than "how much did they scroll around".

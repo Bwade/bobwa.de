@@ -5,6 +5,15 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    // Beyond `strict`. The codebase already satisfies all of these, so they
+    // are a ratchet against future regressions rather than a cleanup task.
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
