@@ -157,7 +157,7 @@ export const content = {
       {
         title: 'Product & Design',
         description:
-          'Roadmapping, capacity planning, and the feasibility gate between revenue, product, and engineering. Enough craft to design the brand and the screens, not just describe them.',
+          'Roadmapping, capacity planning, and the feasibility gate between revenue, product, and engineering. Enough craft to work in Figma and the front end myself, so I can show the idea rather than only describe it.',
         icon: 'compass',
       },
     ],
@@ -223,7 +223,7 @@ export const content = {
         dates: '2023 - Present',
         location: 'Remote',
         summary:
-          'Independent consultancy where I found and run businesses end to end, wearing every hat: product, engineering, business, growth, and design. I stand companies up (entity, cloud, email, go to market), build the apps, and design the brand. Selected engagements are listed below.',
+          'Independent consultancy where I found and run businesses end to end, wearing every hat: product, engineering, business, growth, and design. I stand companies up (entity, cloud, email, go to market), build the apps, and take on brand and design work where it is mine to do. Selected engagements are listed below.',
       },
       {
         company: 'Centene Corporation',
@@ -403,7 +403,7 @@ export const content = {
       {
         name: 'Brand & product design',
         description:
-          'Designed the brand and logo for every company above, plus the UI/UX for the apps I have shipped.',
+          'Brand and logo work for Digital Tide and That Paleo Chick, plus the UI/UX for the apps I have shipped.',
         tags: ['Brand', 'UI/UX', 'Figma'],
         href: null,
       },
