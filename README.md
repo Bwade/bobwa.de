@@ -137,13 +137,29 @@ If you are starting from a fresh Vercel project and want to attach a domain:
 
 ## Analytics
 
-Vercel Web Analytics and Speed Insights, both first party. No Google Analytics,
-no tag manager, no third party script domain, and no cookies, so the site needs
-no consent banner. Both scripts are served from `/_vercel/*` by the platform
-itself, which is why they work even though this is a static export.
+Two backends, reporting from one `trackEvent` call:
 
-They only report on the deployed site. On `localhost` the calls are no-ops, so
-you will not see local traffic in the dashboard.
+1. **Vercel Web Analytics and Speed Insights.** First party, cookieless, served
+   from `/_vercel/*` by the platform, which is why they work on a static export.
+2. **Google Analytics 4**, property `bobwa.de`, measurement ID `G-W1KNWFDXGV`.
+   Loaded through `next/third-parties` so the tag arrives after hydration rather
+   than blocking first paint.
+
+Both only report on the deployed site. On `localhost` the calls are no-ops.
+
+To remove GA entirely, set `site.gaMeasurementId` to `null` in
+[`data/content.ts`](data/content.ts). No code change is needed: events are sent
+via `window.gtag`, and the guard simply stops finding it. Vercel's analytics is
+independent and keeps running.
+
+### Consent
+
+GA4 sets cookies. Vercel's does not. A `.de` domain will draw EU visitors, and
+under GDPR and the ePrivacy directive analytics cookies generally need consent
+before they are set, so **this site should have a consent banner and currently
+does not.** Options, cheapest first: drop GA and rely on the cookieless Vercel
+data; add a consent banner and gate the GA tag behind it; or wire up Google
+Consent Mode v2 with `analytics_storage` denied by default.
 
 ### Events
 
