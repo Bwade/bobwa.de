@@ -1,0 +1,32 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    # One PR for the routine bumps instead of five.
+    groups:
+      dev-dependencies:
+        dependency-type: development
+      production-dependencies:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+    ignore:
+      # postcss and sharp are vendored inside Next.js, not direct dependencies.
+      # Neither is reachable in a static export: there is no runtime, no
+      # user-supplied CSS, and no image processing (images.unoptimized is set).
+      # Dependabot's only available "fix" is to install Next 9.x, seven majors
+      # back, so its security updates fail every run. They clear when Next
+      # bumps its own dependencies. Revisit if this ever stops being a static
+      # export, because then the sharp advisories would actually apply.
+      - dependency-name: postcss
+      - dependency-name: sharp
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
