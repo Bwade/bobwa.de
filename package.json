@@ -13,6 +13,7 @@
     "verify": "npm run typecheck && npm run lint && npm run format:check && npm run build"
   },
   "dependencies": {
+    "@next/third-parties": "^16.2.12",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "lucide-react": "^1.28.0",
