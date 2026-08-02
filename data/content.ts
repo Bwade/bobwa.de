@@ -6,6 +6,9 @@
  *
  * `icon` values map to icons in components/icons.tsx. If you want a different
  * icon, add it to that map first, then use its key here.
+ *
+ * Kept deliberately in sync with public/Robert_Wade_Resume.pdf. When the resume
+ * changes, change this too, otherwise the page and the download disagree.
  */
 
 export type WorkItem = {
@@ -38,7 +41,7 @@ export const content = {
     url: 'https://bobwa.de',
     title: 'Bob Wade, Senior Engineering Manager',
     description:
-      'Engineering leader with 19 years building technical organizations. I own Core Engineering and Solutions Engineering at Button, the platform behind $100B+ in driven mobile commerce.',
+      'Senior Engineering Manager at Button owning Core Engineering and Solutions Engineering: 13 engineers behind $100B+ in mobile commerce. 19 years in engineering, 10+ in management.',
     locale: 'en_US',
     /**
      * Social share card, 1200x630, committed at public/og.png.
@@ -62,7 +65,10 @@ export const content = {
 
   hero: {
     name: 'Bob Wade',
-    title: 'Senior Engineering Manager: Platform, Partner & Product Engineering',
+    title: 'Engineering Leader: Platform & Reliability, Partner & Product, AI-Augmented Ops',
+    /** Two or three sentences. Keep it tight. This is the whole pitch. */
+    blurb:
+      "I own Core Engineering and Solutions Engineering at Button: 13 engineers behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. I take over unstable orgs and leave behind reliable, automated systems. Nineteen years in engineering, more than ten in management, and I still found and run commerce businesses end to end.",
     /**
      * Shown under the hero CTAs and fed into the structured data. Naming the
      * metro as well as the town is deliberate: recruiters search "Nashville",
@@ -71,9 +77,6 @@ export const content = {
     location: 'Spring Hill, TN (Greater Nashville)',
     /** Used for schema.org PostalAddress. Keep in sync with `location`. */
     address: { locality: 'Spring Hill', region: 'TN', country: 'US' },
-    /** Two or three sentences. Keep it tight. This is the whole pitch. */
-    blurb:
-      'I own Core Engineering and Solutions Engineering at Button: 13 engineers across two functions running the platform behind $100B+ in driven mobile commerce. Nineteen years building technical organizations, more than ten of them in management, and still hands on enough to fix the systems before I fix the org that owns them. Separately I founded a consultancy that stands companies up end to end.',
     /**
      * Portrait shown next to the hero text. Set `src` to null to hide it
      * entirely; the hero then renders text only and never shows a broken image.
@@ -96,16 +99,16 @@ export const content = {
 
   /** Four metric cards. `value` is the big number, `label` the caption. */
   impact: [
-    { value: '$100B+', label: 'in commerce driven' },
+    { value: '$100B+', label: 'mobile commerce driven' },
     { value: '99.99%', label: 'platform uptime' },
     { value: '130M+', label: 'Amazon clicks / month' },
-    { value: '13', label: 'engineers across 2 functions' },
+    { value: '13 / 2', label: 'engineers and functions owned' },
   ],
 
   about: {
     heading: 'About',
     /** One short paragraph. */
-    body: "I'm an engineering leader with 19 years building and running technical organizations, including more than ten years in management. At Button I own Core Engineering and Solutions Engineering, the platform behind $100B+ in driven mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. I'm a hands on architect who still ships: I fix the systems, then I fix the organization that owns them. Separately I founded Digital Tide, a consultancy that stands companies up end to end.",
+    body: "I'm a Senior Engineering Manager at Button, owning two engineering functions and 13 engineers behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. Nineteen years in engineering, more than ten in management. I take over unstable orgs and leave behind reliable, automated systems: I rebuilt on-call to 99.99% uptime, held the platform through a Super Bowl at 2.6x its planned peak with errors flat, and run delivery increasingly on AI-augmented workflows. I also found and run commerce businesses end to end, from engineering and product through brand and design.",
   },
 
   whatIDo: {
@@ -114,25 +117,25 @@ export const content = {
       {
         title: 'Platform Reliability & Scale',
         description:
-          'Incident command, on-call and severity design, blameless postmortems, SLAs, and peak load readiness. The operational discipline that keeps uptime at four nines instead of hoping for it.',
+          'Incident command, on-call and severity design, blameless postmortems, SLAs, and peak load readiness. Prime Day and Super Bowl scale events, planned rather than survived.',
         icon: 'activity',
       },
       {
         title: 'Partner Integrations',
         description:
-          'The technical and relationship surface between us and the largest merchants on the internet. Enterprise integrations, escalation management, and attribution pipelines that survive a partner roadmap change.',
+          'The technical and relationship surface between us and the largest merchants on the internet. Enterprise integrations, tiered SLAs, escalation models, and attribution pipelines.',
         icon: 'plug',
       },
       {
         title: 'AI-Augmented Delivery',
         description:
-          'Claude and MCP in the delivery loop where it compounds: review, scaffolding, migrations, and tightly scoped internal tooling. Guardrails first, so velocity does not turn into debt.',
+          'Claude and MCP in the delivery loop where it compounds: review, scaffolding, migrations, and tightly scoped internal tooling built so it cannot hallucinate its way into production.',
         icon: 'sparkles',
       },
       {
         title: 'Product & Design',
         description:
-          'Enough craft to prototype an idea instead of describing it. I write the spec, draw the screens, cut the scope, and hand the team something they can build.',
+          'Roadmapping, capacity planning, and the feasibility gate between revenue, product, and engineering. Enough craft to design the brand and the screens, not just describe them.',
         icon: 'compass',
       },
     ],
@@ -147,39 +150,47 @@ export const content = {
         dates: 'Oct 2020 - Present',
         location: 'Remote (NYC)',
         summary:
-          "Own two engineering functions and 13 direct reports: Core Engineering (routing, attribution, data, infrastructure) and Solutions Engineering (partner delivery and technical escalation), for the platform behind $100B+ in driven mobile commerce across 200+ brands including Amazon, Walmart, Uber, Lyft, Fetch, Target, and Sam's Club. I own both the platform and the partner handoff that most orgs split and drop.",
+          "Own two engineering functions and 13 direct reports: Core Engineering (routing, attribution, data, infrastructure) and Solutions Engineering (partner delivery and technical escalation), covering the platform behind $100B+ in driven mobile commerce and routing 130M+ Amazon creator clicks a month across 200+ brands including Amazon, Walmart, Uber, Lyft, Fetch, Target, and Sam's Club. I own both the platform and the partner handoff that most orgs split and drop.",
         groups: [
           {
-            label: 'Reliability, run the business and keep the lights on',
+            label: 'Reliability and high-traffic events',
             bullets: [
-              'Own the RTB/KTLO mandate for the core platform: reliability, tech debt paydown, and operational load for the systems moving $100B+ in commerce.',
-              'Rebuilt on-call, severity classification, and blameless postmortems from scratch, sustaining 99.99% uptime and cutting MTTR.',
-              "Incident commander through Prime Day and Fetch's Super Bowl, where the platform peaked at roughly 5,260 RPS, about 2.6x the planned peak, with 4XX errors inside normal limits.",
+              'My team owns the core infrastructure that makes Button run: the routing, decisioning, attribution, and order pipeline every partner and dollar flows through. I hold the RTB/KTLO mandate for it, covering reliability, tech debt, and operational load for systems moving $100B+ in commerce.',
+              "Lead Amazon Prime Day readiness year over year, Button's largest revenue event: capacity planning, load testing, and Go/No-Go across the core services, scaling infrastructure up to 12x baseline and proving headroom for each larger ramp at 100% uptime.",
+              "Incident commander through Fetch's Super Bowl, holding the platform at 2.6x its planned peak with errors within normal limits. Rebuilt on-call, severity, and blameless postmortems from scratch, sustaining 99.99% uptime and cutting MTTR.",
               'Cut core engineering interrupts about 30% by standing up a Support to Data to Core escalation flow, converting reactive firefighting into protected delivery capacity.',
             ],
           },
           {
             label: 'Scale, platform modernization, and AI-augmented operations',
             bullets: [
-              'Hardened the order pipeline with parallelized finalization workers, load tested to 5,000 RPS, and drove Aurora migrations, ComStore and Django modernization, and Terraform plus AWS provider upgrades, clearing debt that had blocked platform progress.',
-              'Stood up ML platform infrastructure on SageMaker and backed cost discipline including a single AWS savings of roughly $70K per year.',
+              "Own Button's order pipeline, the platform's revenue path at 600K+ orders a day. Drove autoscaling, Aurora migrations, and ComStore and Django modernization, and led the release-confidence program (staging parity plus end-to-end testing) that cut release cycles from roughly two months to about three weeks. Backed cost discipline including a single AWS saving of roughly $70K a year.",
               "Sponsored internal read-only LLM tooling, a Sam's Club order debugger and a CSV validator, that cut manual triage load. Built with tightly scoped tools to prevent hallucination.",
-              'Helped drive AI-augmented delivery across the org, with Claude attributed code reaching about 45% of lines shipped and roughly two thirds of merged PRs.',
+              'Championed AI-augmented delivery. Org-wide, Claude-attributed code reached about 45% of lines shipped and roughly two thirds of merged PRs.',
             ],
           },
           {
-            label: 'Partner integrations and revenue',
+            label: 'Support engineering and service design',
             bullets: [
-              "Solutions Engineering landed and scaled integrations across Best Buy, Sam's Club (Glass and mParticle migration), TurboTax, Target, Fetch, Uber One, Lululemon, Hostelworld, Puma, and Albertsons.",
+              "Stood up Button's partner-support function from scratch, taking support from 100% ad hoc (Slack DMs and email, no ownership or routing) to a structured, SLA-backed operation.",
+              'Architected the Salesforce to Zendesk to Jira model, with Zendesk as the source of truth for routing, prioritization, and SLAs, and formed a Support Engineering team to own it.',
+              "Defined tiered SLAs and the incident priority matrix across strategic partners (Uber, Amazon, Best Buy, Sam's Club, Fetch): P0 acknowledged in under 15 minutes, 30-minute response for Tier 1, plus the escalation decision tree routing work across Solutions Engineering, Data, and on-call.",
+            ],
+          },
+          {
+            label: 'Partner integrations, product, and revenue',
+            bullets: [
+              "Solutions Engineering landed and scaled integrations across a who's-who of commerce, travel, and marketplace: Amazon, Walmart, Best Buy, Target, Sam's Club, Nike, Lululemon, Puma, Samsung, Expedia, Marriott, Uber One, Lyft, Disney+, and StubHub, including the Sam's Club Glass and mParticle migration.",
               'Cut enterprise integration onboarding time 30% and raised revenue per integration 20% by standardizing the integration path and removing bespoke per partner engineering.',
-              'Defined the SLAs and escalation model across Solutions Engineering, Partner Success, and Support.',
-              "Led formation and initial delivery of Button's retail media product with NY Post, Forbes, and BuzzFeed.",
+              "Led formation and initial delivery of Button's retail media product: set the roadmap and release plan with product and revenue, and shipped initial releases with NY Post, Forbes, and BuzzFeed.",
             ],
           },
           {
-            label: 'Organization',
+            label: 'Organization and delivery leadership',
             bullets: [
-              'Built the team I now run: raised the partner facing hiring bar, formalized design review, authored the runbook and SOP library global teams use, and sponsored a PERM labor certification end to end.',
+              'Act as engineering manager, product manager, and scrum lead for my org: own the roadmap, backlog prioritization, quarterly capacity planning, and the full Agile cadence across multiple squads, plus the feasibility gate between Revenue, Product, and Engineering on what actually gets built.',
+              "Early on, led Button's PostTap product engineering and ran half the org through the post-COVID rebuild.",
+              'Built the team I now run and lead through managers, not only ICs: a Solutions Engineering leader on the director track reports to me directly. Raised the hiring bar, authored the career-growth ladder and design-review process, and sponsored a PERM labor certification end to end.',
             ],
           },
         ],
@@ -190,7 +201,7 @@ export const content = {
         dates: '2023 - Present',
         location: 'Remote',
         summary:
-          'Founded and operate an independent technical consultancy. I stand businesses up end to end, covering cloud, email, application, automation, and go to market, then run them. Architect, operator, and PM in one seat. Selected engagements are listed below.',
+          'Independent consultancy where I found and run businesses end to end, wearing every hat: product, engineering, business, growth, and design. I stand companies up (entity, cloud, email, go to market), build the apps, and design the brand. Selected engagements are listed below.',
       },
       {
         company: 'Centene Corporation',
@@ -219,7 +230,7 @@ export const content = {
             bullets: [
               'Built and led the cross functional team that shipped a self service AI health assistant, reducing call center volume, and established the SDLC framework for the inherited application.',
               'Delivered more than 20 mobile applications across iOS and Android, launched care management in the Florida market, and standardized mobile build, release, and compliance for state contracts.',
-              'As Senior Engineer: implemented OAuth 2.0 via API Gateway, migrated the department from SVN to Git, and hired and mentored about 10 engineers.',
+              'As Senior Engineer: shipped OAuth 2.0 via API Gateway, migrated the org from SVN to Git, and mentored about 10 engineers.',
             ],
           },
         ],
@@ -264,8 +275,9 @@ export const content = {
         label: 'Leadership',
         items: [
           'Multi-function org design',
+          'Multi-team Agile ceremonies',
           'Hiring and bar setting',
-          'Career frameworks',
+          'Coaching and career development',
           'Performance management',
           'PERM sponsorship',
           'Exec and VP reporting',
@@ -292,6 +304,19 @@ export const content = {
         ],
       },
       {
+        label: 'Product and delivery',
+        items: [
+          'Roadmapping and release planning',
+          'Backlog and capacity planning',
+          'Feasibility and scoping gates',
+          'Cross-functional delivery across product, revenue, and support',
+        ],
+      },
+      {
+        label: 'Design and UX',
+        items: ['Brand and logo design', 'UI/UX', 'Figma', 'Front-end build'],
+      },
+      {
         label: 'AI and automation',
         items: [
           'Claude and MCP',
@@ -311,7 +336,7 @@ export const content = {
       {
         label: 'Cloud and infrastructure',
         items: [
-          'AWS (ECS, EC2, RDS/Aurora, S3, SES, SageMaker)',
+          'AWS (ECS, EC2, RDS/Aurora, S3, SES, Route 53)',
           'GCP',
           'Terraform',
           'Docker',
@@ -334,14 +359,14 @@ export const content = {
       {
         name: 'That Paleo Chick',
         description:
-          'Built the business, not just the site. AWS infrastructure, transactional and marketing email, automated social content production and scheduling via Postiz, publishing pipeline, and affiliate monetization. Runs as a near fully automated operation.',
+          'Built the business, not just the site. AWS infrastructure, email, automated social content and scheduling via Postiz, and affiliate monetization, running as a near fully automated operation.',
         tags: ['E-commerce', 'Automation', 'AWS'],
         href: 'https://thatpaleochick.com',
       },
       {
         name: 'Greedy',
         description:
-          'Ran project management for the full site redesign, covering scope, vendors, design to build, and launch. Own social marketing and paid acquisition, including a competitive intelligence playbook built from live Meta Ad Library analysis and AI generated video creative.',
+          'Ran project management for the full site redesign, covering scope, vendors, and launch. Own social marketing and paid acquisition: a Meta Ad Library driven competitive playbook plus AI generated video creative.',
         tags: ['Program management', 'Growth', 'Paid media'],
         // TODO: add a public link when there is one.
         href: null,
@@ -354,9 +379,16 @@ export const content = {
         href: 'https://charter.digitalti.de',
       },
       {
+        name: 'Brand & product design',
+        description:
+          'Designed the brand and logo for every company above, plus the UI/UX for the apps I have shipped.',
+        tags: ['Brand', 'UI/UX', 'Figma'],
+        href: null,
+      },
+      {
         name: 'Digital Tide',
         description:
-          'The same playbook applied to my own firm, plus the engineering standards clients inherit: Linear first delivery, GitHub Actions CI, Slack automation, and a hybrid repo model.',
+          'The same playbook applied to my own firm, plus the standards clients inherit: Linear first delivery, GitHub Actions CI, and Slack automation.',
         tags: ['Studio', 'Consulting', 'Full-stack'],
         href: 'https://digitalti.de',
       },
