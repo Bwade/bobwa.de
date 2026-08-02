@@ -1,0 +1,150 @@
+- generic [active] [ref=f8e1]:
+  - link "Skip to content" [ref=f8e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f8e3]:
+    - navigation "Primary" [ref=f8e4]:
+      - link "Bob Wade" [ref=f8e5] [cursor=pointer]:
+        - /url: "#top"
+      - list [ref=f8e6]:
+        - listitem [ref=f8e7]:
+          - link "About" [ref=f8e8] [cursor=pointer]:
+            - /url: "#about"
+        - listitem [ref=f8e9]:
+          - link "What I do" [ref=f8e10] [cursor=pointer]:
+            - /url: "#what-i-do"
+        - listitem [ref=f8e11]:
+          - link "Work" [ref=f8e12] [cursor=pointer]:
+            - /url: "#work"
+        - listitem [ref=f8e13]:
+          - link "Contact" [ref=f8e14] [cursor=pointer]:
+            - /url: "#contact"
+      - button "Toggle dark mode" [ref=f8e15]
+  - main [ref=f8e22]:
+    - generic [ref=f8e23]:
+      - paragraph [ref=f8e24]: "Senior Engineering Manager: Platform, Partner & Product Engineering"
+      - heading "Bob Wade" [level=1] [ref=f8e25]
+      - paragraph [ref=f8e26]: "I run the platform teams behind high volume commerce: partner integrations, routing, and the reliability work everything else depends on. I hire and grow engineers, and I stay close enough to the code to catch a bad architecture early. On my own time I build and ship products end to end."
+      - generic [ref=f8e27]:
+        - link "Download Résumé" [ref=f8e28] [cursor=pointer]:
+          - /url: /Robert_Wade_Resume.pdf
+        - link "Email me" [ref=f8e32] [cursor=pointer]:
+          - /url: mailto:bwade231@gmail.com
+      - list [ref=f8e36]:
+        - listitem [ref=f8e37]:
+          - link "LinkedIn" [ref=f8e38] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/bwade231/
+        - listitem [ref=f8e41]:
+          - link "GitHub" [ref=f8e42] [cursor=pointer]:
+            - /url: https://github.com/bwade
+    - region "Impact by the numbers" [ref=f8e45]:
+      - generic [ref=f8e47]:
+        - generic [ref=f8e48]:
+          - term [ref=f8e49]: in commerce driven
+          - definition [ref=f8e50]: $100B+
+        - generic [ref=f8e51]:
+          - term [ref=f8e52]: platform uptime
+          - definition [ref=f8e53]: 99.99%
+        - generic [ref=f8e54]:
+          - term [ref=f8e55]: Amazon clicks / month
+          - definition [ref=f8e56]: 130M+
+        - generic [ref=f8e57]:
+          - term [ref=f8e58]: engineers across 2 functions
+          - definition [ref=f8e59]: "13"
+    - region [ref=f8e60]:
+      - generic [ref=f8e61]:
+        - heading "About" [level=2] [ref=f8e62]
+        - paragraph [ref=f8e63]: "I'm an engineering leader who owns the infrastructure Button runs on: the partner integrations, the routing layer, and the reliability guarantees everything downstream depends on. I'm also a founder and builder. I've taken products from an empty repo to paying customers across engineering, design, and go to market, which is why I usually push for the version that ships."
+    - region [ref=f8e64]:
+      - generic [ref=f8e65]:
+        - heading "What I do" [level=2] [ref=f8e66]
+        - list [ref=f8e67]:
+          - listitem [ref=f8e68]:
+            - heading "Platform Reliability & Scale" [level=3] [ref=f8e71]
+            - paragraph [ref=f8e72]: Systems that hold when volume spikes. Capacity planning, observability, incident response, and the operational discipline that keeps uptime at four nines.
+          - listitem [ref=f8e73]:
+            - heading "Partner Integrations" [level=3] [ref=f8e76]
+            - paragraph [ref=f8e77]: The technical surface between us and the largest merchants on the internet. Integrations that survive their roadmap changes, and onboarding that does not take a heroic effort every time.
+          - listitem [ref=f8e78]:
+            - heading "AI-Augmented Delivery" [level=3] [ref=f8e82]
+            - paragraph [ref=f8e83]: "AI applied where it actually pays off in the delivery loop: code review, scaffolding, migrations, and test coverage. With enough guardrails that speed does not turn into debt."
+          - listitem [ref=f8e84]:
+            - heading "Product & Design" [level=3] [ref=f8e88]
+            - paragraph [ref=f8e89]: Enough craft to prototype an idea instead of describing it. I write the spec, draw the screens, cut the scope, and hand the team something they can build.
+    - region [ref=f8e90]:
+      - generic [ref=f8e91]:
+        - heading "Selected work" [level=2] [ref=f8e92]
+        - list [ref=f8e93]:
+          - listitem [ref=f8e94]:
+            - link [ref=f8e95] [cursor=pointer]:
+              - /url: https://sanbar.io
+              - generic [ref=f8e96]:
+                - heading "Sanbar" [level=3] [ref=f8e97]
+                - generic [ref=f8e101]:
+                  - paragraph [ref=f8e102]: Operations and field service platform for teams that run on scheduling instead of spreadsheets.
+                  - list [ref=f8e103]:
+                    - listitem [ref=f8e104]: Product
+                    - listitem [ref=f8e105]: Next.js
+                    - listitem [ref=f8e106]: AWS
+          - listitem [ref=f8e107]:
+            - link [ref=f8e108] [cursor=pointer]:
+              - /url: https://thatpaleochick.com
+              - generic [ref=f8e109]:
+                - heading "That Paleo Chick" [level=3] [ref=f8e110]
+                - generic [ref=f8e114]:
+                  - paragraph [ref=f8e115]: Food brand and content platform. Storefront, recipe library, and the publishing pipeline behind both.
+                  - list [ref=f8e116]:
+                    - listitem [ref=f8e117]: E-commerce
+                    - listitem [ref=f8e118]: Content
+                    - listitem [ref=f8e119]: Brand
+          - listitem [ref=f8e120]:
+            - generic [ref=f8e122]:
+              - heading "Greedy" [level=3] [ref=f8e123]
+              - generic [ref=f8e124]:
+                - paragraph [ref=f8e125]: Consumer finance experiment that turns everyday spending into something you can see and act on.
+                - list [ref=f8e126]:
+                  - listitem [ref=f8e127]: Fintech
+                  - listitem [ref=f8e128]: Mobile
+                  - listitem [ref=f8e129]: Design
+          - listitem [ref=f8e130]:
+            - link [ref=f8e131] [cursor=pointer]:
+              - /url: https://charter.digitalti.de
+              - generic [ref=f8e132]:
+                - heading "Charter" [level=3] [ref=f8e133]
+                - generic [ref=f8e137]:
+                  - paragraph [ref=f8e138]: Internal delivery platform. Project scaffolding, auth, and the shared services teams keep rebuilding.
+                  - list [ref=f8e139]:
+                    - listitem [ref=f8e140]: Platform
+                    - listitem [ref=f8e141]: Next.js
+                    - listitem [ref=f8e142]: Clerk
+          - listitem [ref=f8e143]:
+            - link [ref=f8e144] [cursor=pointer]:
+              - /url: https://digitalti.de
+              - generic [ref=f8e145]:
+                - heading "Digital Tide" [level=3] [ref=f8e146]
+                - generic [ref=f8e150]:
+                  - paragraph [ref=f8e151]: My studio. Engineering and design for founders who need the first version to be the right one.
+                  - list [ref=f8e152]:
+                    - listitem [ref=f8e153]: Studio
+                    - listitem [ref=f8e154]: Consulting
+                    - listitem [ref=f8e155]: Full-stack
+  - contentinfo [ref=f8e156]:
+    - generic [ref=f8e157]:
+      - heading "Get in touch" [level=2] [ref=f8e158]
+      - paragraph [ref=f8e159]: Open to conversations about platform and engineering leadership roles, advisory work, or an interesting build.
+      - link "bwade231@gmail.com" [ref=f8e160] [cursor=pointer]:
+        - /url: mailto:bwade231@gmail.com
+      - list [ref=f8e161]:
+        - listitem [ref=f8e162]:
+          - link "Email" [ref=f8e163] [cursor=pointer]:
+            - /url: mailto:bwade231@gmail.com
+        - listitem [ref=f8e167]:
+          - link "LinkedIn" [ref=f8e168] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/bwade231/
+        - listitem [ref=f8e171]:
+          - link "GitHub" [ref=f8e172] [cursor=pointer]:
+            - /url: https://github.com/bwade
+      - generic [ref=f8e175]:
+        - paragraph [ref=f8e176]: (c) 2026 Bob Wade
+        - link "ATS résumé" [ref=f8e177] [cursor=pointer]:
+          - /url: /Robert_Wade_Resume_ATS.pdf
+  - alert [ref=f8e181]

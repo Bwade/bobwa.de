@@ -1,4 +1,5 @@
 import About from '@/components/About';
+import Experience from '@/components/Experience';
 import Hero from '@/components/Hero';
 import ImpactStrip from '@/components/ImpactStrip';
 import SiteFooter from '@/components/SiteFooter';
@@ -12,11 +13,21 @@ const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: content.hero.name,
+  alternateName: 'Robert Wade',
   jobTitle: content.hero.title,
   description: content.site.description,
   url: content.site.url,
   email: `mailto:${content.contact.email}`,
   sameAs: content.hero.social.map((link) => link.href),
+  worksFor: content.experience.roles.map((role) => ({
+    '@type': 'Organization',
+    name: role.company,
+  })),
+  alumniOf: content.experience.education.items.map((item) => ({
+    '@type': 'EducationalOrganization',
+    name: item.company,
+  })),
+  knowsAbout: content.toolkit.groups.flatMap((group) => group.items),
 };
 
 export default function Home() {
@@ -36,6 +47,7 @@ export default function Home() {
         <ImpactStrip />
         <About />
         <WhatIDo />
+        <Experience />
         <Work />
       </main>
 
