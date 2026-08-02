@@ -71,7 +71,7 @@ export default function EdNav() {
   }, []);
 
   const tone = onDark ? 'text-ed-dark-ink' : 'text-ed-ink';
-  const muted = onDark ? 'text-ed-dark-ink/55' : 'text-ed-ink/50';
+  const muted = onDark ? 'text-ed-dark-ink/55' : 'text-ed-muted';
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50">

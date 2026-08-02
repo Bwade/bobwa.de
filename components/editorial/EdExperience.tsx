@@ -12,13 +12,13 @@ function CompactList({
 }) {
   return (
     <div>
-      <h3 className="ed-label text-ed-ink/45">{label}</h3>
+      <h3 className="ed-label text-ed-muted">{label}</h3>
       <ul className="mt-5 space-y-3">
         {items.map((item) => (
           <li key={item.title + item.company} className="text-sm leading-snug">
             <span className="text-ed-ink">{item.title}</span>
             <span className="text-ed-ink/60">, {item.company}</span>
-            {item.dates && <span className="text-ed-ink/40"> ({item.dates})</span>}
+            {item.dates && <span className="text-ed-muted"> ({item.dates})</span>}
           </li>
         ))}
       </ul>
@@ -35,7 +35,7 @@ export default function EdExperience() {
     >
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <h2 id="experience-heading" className="ed-label text-ed-ink/45">
+          <h2 id="experience-heading" className="ed-label text-ed-muted">
             {experience.heading}
           </h2>
         </Reveal>
@@ -49,8 +49,8 @@ export default function EdExperience() {
             >
               <div className="lg:sticky lg:top-24 lg:self-start">
                 <h3 className="ed-display text-[clamp(1.75rem,3.2vw,2.6rem)]">{role.company}</h3>
-                <p className="text-ed-ink/50 mt-3 text-sm">{role.dates}</p>
-                {role.location && <p className="text-ed-ink/50 text-sm">{role.location}</p>}
+                <p className="text-ed-muted mt-3 text-sm">{role.dates}</p>
+                {role.location && <p className="text-ed-muted text-sm">{role.location}</p>}
               </div>
 
               <div>
@@ -93,7 +93,7 @@ export default function EdExperience() {
         </Reveal>
 
         <Reveal className="border-ed-ink/25 mt-20 border-t pt-12">
-          <h3 className="ed-label text-ed-ink/45">{toolkit.heading}</h3>
+          <h3 className="ed-label text-ed-muted">{toolkit.heading}</h3>
           <dl className="mt-8 grid gap-x-12 gap-y-7 sm:grid-cols-2">
             {toolkit.groups.map((group) => (
               <div key={group.label} className="grid gap-1 sm:grid-cols-[minmax(0,11rem)_1fr]">

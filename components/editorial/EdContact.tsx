@@ -17,7 +17,7 @@ export default function EdContact() {
       className="bg-ed-paper text-ed-ink flex min-h-screen flex-col justify-between px-6 pt-28 pb-10 sm:px-10 sm:pt-36"
     >
       <Reveal className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center">
-        <h2 id="contact-heading" className="ed-label text-ed-ink/45">
+        <h2 id="contact-heading" className="ed-label text-ed-muted">
           {contact.heading}
         </h2>
 
@@ -84,7 +84,7 @@ export default function EdContact() {
               <FileText aria-hidden="true" className="size-3.5" strokeWidth={1.75} />
               {contact.atsResume.label}
             </TrackedLink>
-            <p className="text-ed-ink/40 text-sm">
+            <p className="text-ed-muted text-sm">
               (c) {year} {contact.copyrightName}
             </p>
           </div>

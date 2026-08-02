@@ -123,6 +123,7 @@ body {
   --color-ed-dark-ink: #f2f0ec;
   --color-ed-accent: #0d5c63;
   --color-ed-accent-dark: #7fc8cd;
+  --color-ed-muted: #656b72;
   --color-ed-rule: rgba(16, 17, 18, 0.14);
   --color-ed-rule-dark: rgba(242, 240, 236, 0.18);
 }
