@@ -16,13 +16,23 @@ updates:
           - minor
           - patch
     ignore:
-      # postcss and sharp are vendored inside Next.js, not direct dependencies.
-      # Neither is reachable in a static export: there is no runtime, no
-      # user-supplied CSS, and no image processing (images.unoptimized is set).
-      # Dependabot's only available "fix" is to install Next 9.x, seven majors
-      # back, so its security updates fail every run. They clear when Next
-      # bumps its own dependencies. Revisit if this ever stops being a static
-      # export, because then the sharp advisories would actually apply.
+      # Majors for these two are gated by eslint-config-next, which bundles a
+      # typescript-eslint that rejects TS >= 7 and targets ESLint 9. Bumping
+      # them ahead of it breaks `npm run lint` with
+      # "typescript-eslint does not support TS 7.0". Move them when
+      # eslint-config-next moves.
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
+      - dependency-name: eslint
+        update-types: ['version-update:semver-major']
+
+      # Vendored inside Next.js rather than direct dependencies, and neither is
+      # reachable in a static export: no runtime, no user-supplied CSS, and no
+      # image processing (images.unoptimized is set). Dependabot's only
+      # available remediation is Next 9.x, seven majors back, so its security
+      # runs fail every time. These clear when Next bumps its own dependencies.
+      # Revisit if this ever stops being a static export, because the sharp
+      # advisories would then actually apply.
       - dependency-name: postcss
       - dependency-name: sharp
 
