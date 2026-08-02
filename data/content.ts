@@ -105,6 +105,28 @@ export const content = {
     { value: '13 / 2', label: 'engineers and functions owned' },
   ],
 
+  /**
+   * design/editorial-scroll only. Three words revealed over the portrait in the
+   * sticky panel. Keep them to one word each; they are set very large.
+   */
+  traits: {
+    label: 'How I work',
+    items: [
+      {
+        word: 'Unflappable',
+        line: 'Prime Day at 12x baseline. A Super Bowl at 2.6x its planned peak. Four nines, sustained, because on-call and severity were rebuilt rather than hoped over.',
+      },
+      {
+        word: 'Hands-on',
+        line: 'Close enough to the code to catch a bad architecture early. I fix the systems first, then I fix the organization that owns them.',
+      },
+      {
+        word: 'Commercial',
+        line: 'Onboarding down 30%, revenue per integration up 20%, a retail media product stood up from nothing. I also found and run businesses of my own.',
+      },
+    ],
+  },
+
   about: {
     heading: 'About',
     /** One short paragraph. */

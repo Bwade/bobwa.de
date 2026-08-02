@@ -1,11 +1,12 @@
-import About from '@/components/About';
-import Experience from '@/components/Experience';
-import Hero from '@/components/Hero';
-import ImpactStrip from '@/components/ImpactStrip';
-import SiteFooter from '@/components/SiteFooter';
-import SiteNav from '@/components/SiteNav';
-import WhatIDo from '@/components/WhatIDo';
-import Work from '@/components/Work';
+import EdAbout from '@/components/editorial/EdAbout';
+import EdContact from '@/components/editorial/EdContact';
+import EdExperience from '@/components/editorial/EdExperience';
+import EdHero from '@/components/editorial/EdHero';
+import EdImpact from '@/components/editorial/EdImpact';
+import EdNav from '@/components/editorial/EdNav';
+import EdTraits from '@/components/editorial/EdTraits';
+import EdWhatIDo from '@/components/editorial/EdWhatIDo';
+import EdWork from '@/components/editorial/EdWork';
 import { content } from '@/data/content';
 
 /** Structured data so search results show the person, not just the page. */
@@ -39,25 +40,42 @@ const personJsonLd = {
 export default function Home() {
   return (
     <>
+      {/* Without JS the reveal classes would leave content faded out forever. */}
+      <noscript>
+        <style>{`.reveal,.reveal-stagger>*{opacity:1!important;transform:none!important}`}</style>
+      </noscript>
+
       <a
         href="#main"
-        className="focus:bg-accent focus:text-paper-raised sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded-full focus:px-4 focus:py-2 focus:text-sm"
+        className="focus:bg-ed-accent focus:text-ed-paper sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:text-sm"
       >
         Skip to content
       </a>
 
-      <SiteNav />
+      <EdNav />
 
+      {/* data-panel tells the nav whether it is currently over light or dark. */}
       <main id="main" className="flex-1">
-        <Hero />
-        <ImpactStrip />
-        <About />
-        <WhatIDo />
-        <Experience />
-        <Work />
+        <div data-panel="light">
+          <EdHero />
+          <EdImpact />
+          <EdAbout />
+        </div>
+        <div data-panel="dark">
+          <EdTraits />
+          <EdWhatIDo />
+        </div>
+        <div data-panel="light">
+          <EdExperience />
+        </div>
+        <div data-panel="dark">
+          <EdWork />
+        </div>
       </main>
 
-      <SiteFooter />
+      <div data-panel="light">
+        <EdContact />
+      </div>
 
       <script
         type="application/ld+json"

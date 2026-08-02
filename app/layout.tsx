@@ -72,29 +72,13 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * Applies the stored (or system) theme before first paint so the page never
- * flashes the wrong background. Kept tiny and inline on purpose.
- */
-const noFlashTheme = `
-(function(){try{
-  var s=localStorage.getItem('theme');
-  var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
-  document.documentElement.classList.toggle('dark',d);
-}catch(e){}})();
-`;
+// The editorial variant commits to one palette: alternating light and near-black
+// panels are the design. There is no theme toggle here, so no no-flash script.
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${inter.variable} ${newsreader.variable} h-full`}
-    >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: noFlashTheme }} />
-      </head>
-      <body className="flex min-h-full flex-col">
+    <html lang="en" className={`${inter.variable} ${newsreader.variable} h-full`}>
+      <body className="bg-ed-paper flex min-h-full flex-col">
         {children}
         {/* Cookieless and first party, so no consent banner and no third party
             script domain. Both are served from /_vercel/* by the platform. */}
