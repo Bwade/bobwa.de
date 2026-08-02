@@ -5,16 +5,28 @@ and a `w` drawn as a true zigzag rather than two arches. Black and white only.
 
 ## Files
 
-| File | Use |
-| --- | --- |
-| `bw-monogram-black.svg` | The mark on its own, for light backgrounds. Vector source. |
-| `bw-monogram-white.svg` | Same mark for dark backgrounds. |
-| `bw-tile-dark.svg` | White mark on a near-black rounded square. This is the site favicon. |
-| `bw-tile-light.svg` | Black mark on off-white, for the same use on a light surface. |
-| `bw-*-512.png`, `bw-*-1024.png` | Raster exports, transparent where the mark stands alone. |
+| File                            | Use                                                                       |
+| ------------------------------- | ------------------------------------------------------------------------- |
+| `bw-monogram-black.svg`         | The mark on its own, for light backgrounds. Vector source.                |
+| `bw-monogram-white.svg`         | Same mark for dark backgrounds.                                           |
+| `bw-tile-dark.svg`              | White mark on a near-black rounded square. This is the site favicon.      |
+| `bw-tile-light.svg`             | Black mark on off-white, for the same use on a light surface.             |
+| `bw-lockup-*.svg`               | Horizontal: mark, then "Bob Wade". The default for a signature or header. |
+| `bw-lockup-stacked-*.svg`       | Mark over the name. For square-ish space: avatars, letterhead.            |
+| `bw-*-512.png`, `bw-*-1024.png` | Raster exports, transparent where the mark stands alone.                  |
 
 `public/icon.svg` and `public/apple-touch-icon.png` are generated from
 `bw-tile-dark.svg`. Change the mark here first, then re-export those.
+
+The lockups have "Bob Wade" converted to outlines, so they carry no font
+dependency and render correctly for anyone without Newsreader installed. The
+tradeoff is that the text is no longer editable as text: to change the name or
+the setting, re-run `scripts/build_lockups.py` rather than editing the SVG.
+
+The site nav does **not** use these files. It inlines the mark as a React
+component in `components/icons.tsx` so it inherits `currentColor` and inverts
+as the bar crosses light and dark panels, with the name kept as live text. Any
+change to the geometry has to be made in both places.
 
 ## Geometry
 

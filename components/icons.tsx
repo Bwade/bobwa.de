@@ -35,6 +35,31 @@ function GithubMark(props: IconProps) {
 }
 
 /**
+ * The bw monogram, kept in sync with `brand/bw-monogram-*.svg`.
+ *
+ * Inlined rather than loaded as a file so it inherits `currentColor` and
+ * inverts with the nav as it crosses light and dark panels, which an <img>
+ * cannot do. Stroked, not outlined, so the weight stays a single value.
+ */
+export function BwMark(props: IconProps) {
+  return (
+    <svg viewBox="0 0 103 101" fill="none" aria-hidden="true" {...props}>
+      <g
+        transform="translate(-11.5 4.5)"
+        stroke="currentColor"
+        strokeWidth={9}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M 16 0 L 16 92" />
+        <path d="M 16 46 C 58 46 58 92 16 92" />
+        <path d="M 70 46 L 79 92 L 90 64 L 101 92 L 110 46" />
+      </g>
+    </svg>
+  );
+}
+
+/**
  * The only place icons are wired up. `data/content.ts` refers to these by key,
  * so copy edits never touch a component. Add new entries here first.
  */

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { content } from '@/data/content';
+import { BwMark } from '@/components/icons';
 import { trackEvent } from '@/lib/analytics';
 
 const { nav } = content;
@@ -91,8 +92,11 @@ export default function EdNav() {
         aria-label="Primary"
         className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-6 sm:px-10"
       >
-        <a href="#top" className={`ed-display hidden text-2xl transition-colors sm:block ${tone}`}>
-          {nav.brand}
+        {/* The name stays in the DOM at every width so the link keeps its
+            accessible name; below sm only the monogram is drawn. */}
+        <a href="#top" className={`flex items-center gap-2.5 transition-colors ${tone}`}>
+          <BwMark className="size-9 shrink-0" />
+          <span className="ed-display text-2xl max-sm:sr-only">{nav.brand}</span>
         </a>
 
         <ul className="flex flex-1 items-center gap-5 text-xs sm:justify-end sm:gap-7 sm:text-sm">
