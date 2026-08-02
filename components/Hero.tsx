@@ -81,8 +81,8 @@ export default function Hero() {
             <Image
               src={portrait}
               alt={hero.portrait.alt}
-              width={1000}
-              height={1250}
+              width={480}
+              height={600}
               priority
               sizes="(min-width: 1024px) 14rem, (min-width: 640px) 12rem, 10rem"
               className="aspect-[4/5] w-full object-cover"
