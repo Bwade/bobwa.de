@@ -49,7 +49,9 @@ export default function EdHero() {
       <Reveal className="mx-auto flex w-full max-w-6xl flex-[1_1_auto] flex-col justify-center pt-[42svh] pb-16 lg:pt-40 lg:pb-24">
         <p className="ed-label text-ed-accent max-w-xl lg:max-w-lg">{hero.title}</p>
 
-        <h1 className="ed-display mt-7 text-[clamp(3.25rem,10vw,8.5rem)]">{hero.name}</h1>
+        <h1 className="ed-display mt-7 text-[clamp(3.25rem,10vw,8.5rem)] leading-[0.88]">
+          {hero.name}
+        </h1>
 
         <p className="text-ed-ink/75 mt-8 max-w-xl text-lg leading-relaxed sm:text-xl">
           {hero.blurb}

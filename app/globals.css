@@ -175,11 +175,13 @@ body {
   }
 }
 
-/* Display type that scales with the viewport instead of stepping at breakpoints. */
+/* Display type that scales with the viewport instead of stepping at breakpoints.
+   Deliberately does NOT set line-height: this class is defined after Tailwind's
+   utilities, so a line-height here silently beats every `leading-*` class at the
+   call site. Leading is set per use instead. */
 .ed-display {
   font-family: var(--font-newsreader), ui-serif, Georgia, serif;
   font-weight: 400;
-  line-height: 0.88;
   letter-spacing: -0.025em;
 }
 
@@ -188,4 +190,28 @@ body {
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+/* Section rhythm for the editorial variant. One scale, applied everywhere,
+   instead of each component picking its own padding. */
+.ed-section {
+  padding-block: 7rem;
+}
+
+@media (min-width: 640px) {
+  .ed-section {
+    padding-block: 10rem;
+  }
+}
+
+/* For a section that follows another of the same tone, so the two paddings do
+   not stack into an accidental chasm. Declared after .ed-section because
+   padding-block would otherwise beat any Tailwind pt-* utility. */
+.ed-section-follows {
+  padding-block-start: 0;
+}
+
+/* Standard gap between a section's small label and the content under it. */
+.ed-section-body {
+  margin-top: 3.5rem;
 }

@@ -8,7 +8,7 @@ export default function EdWork() {
     <section
       id="work"
       aria-labelledby="work-heading"
-      className="bg-ed-dark text-ed-dark-ink px-6 py-28 sm:px-10 sm:py-36"
+      className="bg-ed-dark text-ed-dark-ink ed-section px-6 sm:px-10"
     >
       <div className="mx-auto max-w-6xl">
         <Reveal>
@@ -17,13 +17,13 @@ export default function EdWork() {
           </h2>
         </Reveal>
 
-        <ul className="mt-14">
+        <ul className="ed-section-body">
           {content.work.items.map((item) => {
             const href = item.href ?? null;
 
             const body = (
               <div className="grid gap-x-12 gap-y-4 py-10 lg:grid-cols-[minmax(0,17rem)_1fr]">
-                <h3 className="ed-display group-hover:text-ed-accent-dark flex items-start gap-2 text-[clamp(1.6rem,3vw,2.4rem)] transition-colors">
+                <h3 className="ed-display group-hover:text-ed-accent-dark flex items-start gap-2 text-[clamp(1.6rem,3vw,2.4rem)] leading-[1.1] transition-colors">
                   {item.name}
                   {href && (
                     <ArrowUpRight

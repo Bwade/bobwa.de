@@ -31,7 +31,7 @@ export default function EdExperience() {
     <section
       id="experience"
       aria-labelledby="experience-heading"
-      className="bg-ed-paper text-ed-ink px-6 py-28 sm:px-10 sm:py-36"
+      className="bg-ed-paper text-ed-ink ed-section px-6 sm:px-10"
     >
       <div className="mx-auto max-w-6xl">
         <Reveal>
@@ -40,7 +40,7 @@ export default function EdExperience() {
           </h2>
         </Reveal>
 
-        <ol className="mt-14">
+        <ol className="ed-section-body">
           {experience.roles.map((role) => (
             <Reveal
               as="li"
@@ -48,7 +48,9 @@ export default function EdExperience() {
               className="border-ed-ink/25 grid gap-x-12 gap-y-6 border-t py-12 lg:grid-cols-[minmax(0,17rem)_1fr]"
             >
               <div className="lg:sticky lg:top-24 lg:self-start">
-                <h3 className="ed-display text-[clamp(1.75rem,3.2vw,2.6rem)]">{role.company}</h3>
+                <h3 className="ed-display text-[clamp(1.75rem,3.2vw,2.6rem)] leading-[1.05]">
+                  {role.company}
+                </h3>
                 <p className="text-ed-muted mt-3 text-sm">{role.dates}</p>
                 {role.location && <p className="text-ed-muted text-sm">{role.location}</p>}
               </div>

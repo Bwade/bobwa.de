@@ -5,7 +5,7 @@ export default function EdImpact() {
   return (
     <section
       aria-label="Impact by the numbers"
-      className="bg-ed-paper text-ed-ink px-6 py-24 sm:px-10 sm:py-32"
+      className="bg-ed-paper text-ed-ink ed-section px-6 sm:px-10"
     >
       <Reveal
         stagger
@@ -13,7 +13,7 @@ export default function EdImpact() {
       >
         {content.impact.map((stat) => (
           <div key={stat.value} className="border-ed-ink border-t pt-6">
-            <p className="ed-display text-[clamp(2.5rem,5vw,4rem)]">{stat.value}</p>
+            <p className="ed-display text-[clamp(2.5rem,5vw,4rem)] leading-[0.95]">{stat.value}</p>
             <p className="text-ed-ink/60 mt-3 text-sm leading-snug">{stat.label}</p>
           </div>
         ))}

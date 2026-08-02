@@ -74,7 +74,7 @@ export default function EdTraits() {
               <span
                 key={item.word}
                 aria-hidden={active === index ? undefined : 'true'}
-                className={`ed-display absolute inset-0 text-[clamp(3rem,10vw,8.5rem)] transition-[opacity,transform] duration-700 ease-out ${
+                className={`ed-display absolute inset-0 text-[clamp(3rem,10vw,8.5rem)] leading-[0.9] transition-[opacity,transform] duration-700 ease-out ${
                   active === index
                     ? 'translate-y-0 opacity-100'
                     : 'pointer-events-none translate-y-3 opacity-0'
