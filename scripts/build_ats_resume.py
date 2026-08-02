@@ -113,7 +113,7 @@ page.insert_text((MARGIN_X, y + NAME_SIZE), "Robert (Bob) Wade", fontname="hebo"
 y += NAME_SIZE + 6
 text_block("Senior Engineering Manager | Platform & Reliability | Partner & Product | AI-Augmented Operations", size=9.8)
 space(1)
-text_block("Spring Hill, TN (Greater Nashville) | bwade231@gmail.com | (314) 630-5428")
+text_block("Spring Hill, TN (Greater Nashville) | bob@bobwa.de | (314) 630-5428")
 text_block("linkedin.com/in/bwade231 | github.com/bwade | bobwa.de")
 
 # --------------------------------------------------------------- summary ----
