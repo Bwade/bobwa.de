@@ -179,7 +179,7 @@ role("Founder & Principal", "Digital Tide | Remote | 2023 - Present")
 text_block(
     "Independent consultancy where I found and run businesses end to end across product, engineering, "
     "business, growth, and design. I stand companies up (entity, cloud, email, go-to-market), build "
-    "the applications, and design the brand."
+    "the applications, and take on brand and design work where it is mine to do."
 )
 space(2)
 for b in [
@@ -187,7 +187,7 @@ for b in [
     "That Paleo Chick (thatpaleochick.com): built the business, not just the site, with AWS infrastructure, email, automated social content and scheduling via Postiz, and affiliate monetization, running as a near-fully automated operation.",
     "Greedy: ran project management for the full site redesign (scope, vendors, launch) and own social marketing and paid acquisition, including a Meta Ad Library-driven competitive playbook and AI-generated video creative.",
     "Charter: designed and built an invoicing application end to end covering auth, billing entities, invoice generation, and payment tracking.",
-    "Designed the brand and logo for every company above, plus the UI/UX for the applications shipped.",
+    "Designed the brand and logo for Digital Tide and That Paleo Chick, and the UI/UX for the applications shipped.",
     "Digital Tide (digitalti.de): applied the same playbook to my own firm, plus the engineering standards clients inherit: Linear-first delivery, GitHub Actions CI, and Slack automation.",
 ]:
     bullet(b)
