@@ -53,19 +53,40 @@ export default function EdTraits() {
       </h2>
 
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Ghosted proof numeral. Decorative: the same figure is stated in the
-            line below, so it is hidden from assistive tech rather than read
-            out twice. */}
+        {/* Ghosted proof numeral. Purely decorative: the same figure is stated
+            in the line below, so it is hidden from assistive tech rather than
+            announced twice.
+
+            Drawn as SVG rather than HTML text on purpose. At 7% opacity this is
+            a watermark, not content, but axe measures contrast on any visible
+            HTML text regardless of aria-hidden and (correctly, by its own
+            rules) fails it at 1.15:1. Making it darker or lighter to satisfy
+            that would destroy the effect, so it stops being text instead. */}
         <div aria-hidden="true" className="absolute inset-0 flex items-center justify-end pr-[5vw]">
           {traits.items.map((item, index) => (
-            <span
+            <svg
               key={item.word}
-              className={`ed-display absolute text-[clamp(6rem,19vw,17rem)] leading-none tracking-tight transition-opacity duration-1000 ease-out ${
+              viewBox="0 0 400 120"
+              preserveAspectRatio="xMaxYMid meet"
+              focusable="false"
+              className={`absolute w-[min(94vw,68rem)] transition-opacity duration-1000 ease-out ${
                 active === index ? 'opacity-[0.07]' : 'opacity-0'
               }`}
             >
-              {item.proof}
-            </span>
+              <text
+                x="400"
+                y="97"
+                textAnchor="end"
+                fontSize="112"
+                fill="currentColor"
+                style={{
+                  fontFamily: 'var(--font-newsreader), ui-serif, Georgia, serif',
+                  letterSpacing: '-0.03em',
+                }}
+              >
+                {item.proof}
+              </text>
+            </svg>
           ))}
         </div>
 
