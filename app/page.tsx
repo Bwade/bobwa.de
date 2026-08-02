@@ -4,7 +4,7 @@ import EdExperience from '@/components/editorial/EdExperience';
 import EdHero from '@/components/editorial/EdHero';
 import EdImpact from '@/components/editorial/EdImpact';
 import EdNav from '@/components/editorial/EdNav';
-import EdTraits from '@/components/editorial/EdTraits';
+import EdChanges from '@/components/editorial/EdChanges';
 import EdWhatIDo from '@/components/editorial/EdWhatIDo';
 import EdWork from '@/components/editorial/EdWork';
 import { content } from '@/data/content';
@@ -62,7 +62,7 @@ export default function Home() {
           <EdAbout />
         </div>
         <div data-panel="dark">
-          <EdTraits />
+          <EdChanges />
           <EdWhatIDo />
         </div>
         <div data-panel="light">

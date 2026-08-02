@@ -124,23 +124,33 @@ export const content = {
   ],
 
   /**
-   * design/editorial-scroll only. Three words revealed over the portrait in the
-   * sticky panel. Keep them to one word each; they are set very large.
+   * The scroll panel. Each entry is one thing that changed under his
+   * ownership: the state on arrival, then the state after. Deliberately
+   * outcomes rather than adjectives.
    */
-  traits: {
-    label: 'How I work',
+  changes: {
+    label: 'What changes',
     items: [
       {
-        word: 'Unflappable',
-        line: 'Prime Day at twelve times baseline. A Super Bowl at 2.6x its planned peak. Four nines, sustained, because on-call and severity were rebuilt from nothing rather than hoped over.',
+        area: 'On-call',
+        before:
+          'Improvised. No severity model, no postmortems, and a team spending its week firefighting instead of building.',
+        after:
+          'Rebuilt from nothing. 99.99% sustained, MTTR down, and Prime Day and a Super Bowl held at up to twelve times baseline.',
       },
       {
-        word: 'Hands-on',
-        line: 'Close enough to the code to catch a bad architecture before it ships. I fix the system, then I fix the organization that let it happen.',
+        area: 'Partner support',
+        before:
+          'Fully ad hoc. Slack DMs and email, no routing, no ownership, and no answer to how long anything should take.',
+        after:
+          'A structured function with Salesforce to Zendesk to Jira as the spine. Tiered SLAs, P0 acknowledged inside fifteen minutes, and a team that owns it.',
       },
       {
-        word: 'Commercial',
-        line: 'Onboarding down 30%. Revenue per integration up 20%. A retail media line stood up from zero. I also found and run my own businesses.',
+        area: 'Delivery',
+        before:
+          'Two month release cycles, core engineering interrupted constantly, and no gate between what was wanted and what was possible.',
+        after:
+          'Three week cycles on staging parity and end to end testing. Interrupts down thirty percent, and a feasibility gate between revenue, product, and engineering.',
       },
     ],
   },
@@ -175,7 +185,7 @@ export const content = {
       {
         title: 'Product & Design',
         description:
-          'I sit in the feasibility gate between revenue, product, and engineering. I can also open Figma and build the front end, so I argue with a prototype instead of a paragraph.',
+          'I own the feasibility gate between revenue, product, and engineering: roadmap, backlog, quarterly capacity, and the call on what actually gets built. Design literate enough to brief it properly and judge the result.',
         icon: 'compass',
       },
     ],

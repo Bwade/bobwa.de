@@ -4,24 +4,21 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { content } from '@/data/content';
 
-const { traits } = content;
+const { changes } = content;
 
 /**
- * A tall section with a sticky, full-height panel. Three sentinels, one per
- * viewport of scroll, decide which trait is showing, so the words cross-fade as
- * you move rather than animating on a timer.
+ * A tall section with a sticky, full-height panel. One sentinel per viewport of
+ * scroll decides which entry is showing, so they cross-fade as you move rather
+ * than animating on a timer.
  *
- * There is deliberately no portrait here. The face is already the hero, and a
- * second one competes with the word that is the actual content of this section.
- * The backdrop is a generated visual instead: traffic traces spiking through a
- * peak and settling back to baseline, which is literally the work being
- * described. Generated rather than stock, and it fades to black on the left so
- * the display word always has a clean field.
+ * Each entry is a before and an after rather than an adjective: what the area
+ * looked like on arrival, and what it looked like afterwards. Outcomes are
+ * checkable, character claims are not.
  *
- * Every word is in the DOM the whole time and only opacity changes, so the text
- * is present for search engines and screen readers regardless of scroll state.
+ * Every entry stays in the DOM and only opacity changes, so all the text is
+ * present for search engines and screen readers regardless of scroll state.
  */
-export default function EdTraits() {
+export default function EdChanges() {
   const [active, setActive] = useState(0);
   const sentinels = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -46,16 +43,19 @@ export default function EdTraits() {
 
   return (
     <section
-      aria-labelledby="traits-heading"
+      aria-labelledby="changes-heading"
       className="bg-ed-dark text-ed-dark-ink relative"
-      // One viewport of scroll per trait.
-      style={{ height: `${traits.items.length * 100}vh` }}
+      // One viewport of scroll per entry.
+      style={{ height: `${changes.items.length * 100}vh` }}
     >
-      <h2 id="traits-heading" className="sr-only">
-        {traits.label}
+      <h2 id="changes-heading" className="sr-only">
+        {changes.label}
       </h2>
 
       <div className="sticky top-0 h-screen w-full overflow-hidden">
+        {/* Generated backdrop: traffic traces ramping through a peak and
+            settling back to baseline. It is the work being described, not a
+            decoration, and it fades to black on the left for the display type. */}
         <Image
           src="/signal.webp"
           alt=""
@@ -65,51 +65,54 @@ export default function EdTraits() {
           className="object-cover object-center"
         />
 
-        {/* Second pass over the baked-in fade, so the word stays legible at any
-            crop including narrow viewports that lose the black field. */}
         <div
           aria-hidden="true"
-          className="from-ed-dark via-ed-dark/55 absolute inset-0 bg-gradient-to-r to-transparent"
+          className="from-ed-dark via-ed-dark/60 absolute inset-0 bg-gradient-to-r to-transparent"
         />
 
         <div className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-center px-6 sm:px-10">
-          <p className="ed-label text-ed-accent-dark">{traits.label}</p>
+          <p className="ed-label text-ed-accent-dark">{changes.label}</p>
 
-          <div className="relative mt-5 h-[clamp(3.5rem,11vw,9rem)]">
-            {traits.items.map((item, index) => (
+          <div className="relative mt-5 h-[clamp(3rem,8vw,6.5rem)]">
+            {changes.items.map((item, index) => (
               <span
-                key={item.word}
+                key={item.area}
                 aria-hidden={active === index ? undefined : 'true'}
-                className={`ed-display absolute inset-0 text-[clamp(3rem,10vw,8.5rem)] leading-[0.9] transition-[opacity,transform] duration-700 ease-out ${
+                className={`ed-display absolute inset-0 text-[clamp(2.5rem,7vw,6rem)] leading-[0.95] transition-[opacity,transform] duration-700 ease-out ${
                   active === index
                     ? 'translate-y-0 opacity-100'
                     : 'pointer-events-none translate-y-3 opacity-0'
                 }`}
               >
-                {item.word}
+                {item.area}
               </span>
             ))}
           </div>
 
-          <div className="relative mt-8 h-32 max-w-xl sm:h-28">
-            {traits.items.map((item, index) => (
-              <p
-                key={item.word}
+          <div className="relative mt-10 h-64 max-w-2xl sm:h-56">
+            {changes.items.map((item, index) => (
+              <div
+                key={item.area}
                 aria-hidden={active === index ? undefined : 'true'}
-                className={`text-ed-dark-ink/75 absolute inset-0 text-base leading-relaxed transition-opacity duration-700 sm:text-lg ${
+                className={`absolute inset-0 transition-opacity duration-700 ${
                   active === index ? 'opacity-100' : 'pointer-events-none opacity-0'
                 }`}
               >
-                {item.line}
-              </p>
+                <p className="text-ed-dark-ink/65 max-w-xl text-base leading-relaxed sm:text-lg">
+                  {item.before}
+                </p>
+                <p className="text-ed-dark-ink border-ed-accent-dark mt-5 max-w-xl border-l-2 pl-5 text-base leading-relaxed sm:text-lg">
+                  {item.after}
+                </p>
+              </div>
             ))}
           </div>
 
-          {/* Progress ticks. Decorative: the words themselves carry the meaning. */}
+          {/* Progress ticks. Decorative: the entries carry the meaning. */}
           <ol aria-hidden="true" className="mt-10 flex gap-2">
-            {traits.items.map((item, index) => (
+            {changes.items.map((item, index) => (
               <li
-                key={item.word}
+                key={item.area}
                 className={`h-px w-10 transition-colors duration-500 ${
                   active === index ? 'bg-ed-accent-dark' : 'bg-ed-rule-dark'
                 }`}
@@ -121,9 +124,9 @@ export default function EdTraits() {
 
       {/* Scroll sentinels, stacked behind the sticky layer. */}
       <div className="absolute inset-0 -z-10">
-        {traits.items.map((item, index) => (
+        {changes.items.map((item, index) => (
           <div
-            key={item.word}
+            key={item.area}
             data-index={index}
             ref={(node) => {
               sentinels.current[index] = node;
