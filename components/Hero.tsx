@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Download, Mail } from 'lucide-react';
+import { Download, Mail, MapPin } from 'lucide-react';
 import { content } from '@/data/content';
 import { icons, type IconKey } from './icons';
 import TrackedLink from './TrackedLink';
@@ -50,7 +50,12 @@ export default function Hero() {
           </TrackedLink>
         </div>
 
-        <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
+        <p className="mt-8 flex items-center gap-1.5 text-sm text-ink-faint">
+          <MapPin aria-hidden="true" className="size-3.5" strokeWidth={1.75} />
+          {hero.location}
+        </p>
+
+        <ul className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
           {hero.social.map((link) => {
             const Icon = icons[link.icon as IconKey];
             return (

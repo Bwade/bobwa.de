@@ -1,4 +1,14 @@
-import { Activity, ArrowUpRight, Compass, Download, FileText, Mail, Plug, Sparkles } from 'lucide-react';
+import {
+  Activity,
+  ArrowUpRight,
+  Compass,
+  Download,
+  FileText,
+  Mail,
+  MapPin,
+  Plug,
+  Sparkles,
+} from 'lucide-react';
 
 export type IconProps = React.SVGProps<SVGSVGElement> & {
   /** Accepted so brand marks and lucide icons share one call signature. */
@@ -37,6 +47,7 @@ export const icons = {
   github: GithubMark,
   linkedin: LinkedinMark,
   mail: Mail,
+  mapPin: MapPin,
   plug: Plug,
   sparkles: Sparkles,
 } satisfies Record<string, React.ComponentType<IconProps>>;

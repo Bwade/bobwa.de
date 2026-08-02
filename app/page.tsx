@@ -19,6 +19,12 @@ const personJsonLd = {
   url: content.site.url,
   email: `mailto:${content.contact.email}`,
   sameAs: content.hero.social.map((link) => link.href),
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: content.hero.address.locality,
+    addressRegion: content.hero.address.region,
+    addressCountry: content.hero.address.country,
+  },
   worksFor: content.experience.roles.map((role) => ({
     '@type': 'Organization',
     name: role.company,

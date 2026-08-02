@@ -63,6 +63,14 @@ export const content = {
   hero: {
     name: 'Bob Wade',
     title: 'Senior Engineering Manager: Platform, Partner & Product Engineering',
+    /**
+     * Shown under the hero CTAs and fed into the structured data. Naming the
+     * metro as well as the town is deliberate: recruiters search "Nashville",
+     * not "Spring Hill".
+     */
+    location: 'Spring Hill, TN (Greater Nashville)',
+    /** Used for schema.org PostalAddress. Keep in sync with `location`. */
+    address: { locality: 'Spring Hill', region: 'TN', country: 'US' },
     /** Two or three sentences. Keep it tight. This is the whole pitch. */
     blurb:
       'I own Core Engineering and Solutions Engineering at Button: 13 engineers across two functions running the platform behind $100B+ in driven mobile commerce. Nineteen years building technical organizations, more than ten of them in management, and still hands on enough to fix the systems before I fix the org that owns them. Separately I founded a consultancy that stands companies up end to end.',
