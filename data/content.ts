@@ -41,7 +41,7 @@ export const content = {
     url: 'https://bobwa.de',
     title: 'Bob Wade, Senior Engineering Manager',
     description:
-      'I run the platform behind $100B+ in mobile commerce at Button. Two engineering functions, 13 people, four nines sustained through Prime Day and a Super Bowl.',
+      'Engineering leader who makes platforms dependable and rebuilds the organizations that own them. Platform reliability, partner integrations, and delivery, at $100B+ commerce scale.',
     locale: 'en_US',
     /**
      * Social share card, 1200x630, committed at public/og.png.
@@ -83,10 +83,10 @@ export const content = {
 
   hero: {
     name: 'Bob Wade',
-    title: 'Senior Engineering Manager at Button',
+    title: 'Engineering leadership: platform reliability, partner integrations, delivery',
     /** Two or three sentences. Keep it tight. This is the whole pitch. */
     blurb:
-      'Two engineering functions, thirteen people, and the platform every partner and every dollar flows through. I take over systems that wobble and leave behind ones that hold.',
+      'I make platforms dependable, and the teams around them capable of keeping them that way without me. Two engineering functions, thirteen engineers, and the routing, attribution and order pipeline that $100B+ in commerce moves through.',
     /**
      * Shown under the hero CTAs and fed into the structured data. Naming the
      * metro as well as the town is deliberate: recruiters search "Nashville",
@@ -158,7 +158,7 @@ export const content = {
   about: {
     heading: 'About',
     /** One short paragraph. */
-    body: 'Nineteen years in engineering, the last ten in management. I came up through code and design before moving into leadership, and I run orgs the way I would want mine run: clear ownership, real escalation paths, and nobody having to be a hero to keep the lights on. At Button that means Core Engineering and Solutions Engineering, so I own both the platform and the partner relationships depending on it. Outside Button I run Digital Tide, where I have stood up companies end to end. I am most useful somewhere the platform matters commercially and the organization around it needs rebuilding at the same time.',
+    body: 'Nineteen years in engineering, the last ten in management. I came up through code and design before moving into leadership, and I run orgs the way I would want mine run: clear ownership, real escalation paths, and nobody having to be a hero to keep the lights on. What I deliver is a platform people can trust and a team that can keep it that way without me. I have done it at consumer scale, through Prime Day and a Super Bowl, and again for my own companies where I stood the whole business up end to end. I am most useful somewhere the platform matters commercially and the organization around it needs rebuilding at the same time.',
   },
 
   whatIDo: {
@@ -173,7 +173,7 @@ export const content = {
       {
         title: 'Partner Integrations',
         description:
-          'Amazon, Walmart, Best Buy, Target, Nike, Marriott, Disney+. I own the technical surface those relationships run on, plus the tiered SLAs and escalation paths that stop every issue becoming a fire drill.',
+          'Amazon, Walmart, Best Buy, Target, Nike, Marriott, Disney+. I own the technical surface enterprise relationships run on, plus the tiered SLAs and escalation paths that stop every issue becoming a fire drill.',
         icon: 'plug',
       },
       {
