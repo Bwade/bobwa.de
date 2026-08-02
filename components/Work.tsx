@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react';
 import { content } from '@/data/content';
 import Section from './Section';
+import TrackedLink from './TrackedLink';
 
 export default function Work() {
   return (
@@ -41,14 +42,16 @@ export default function Work() {
           return (
             <li key={item.name} className="border-t border-rule">
               {linked ? (
-                <a
+                <TrackedLink
+                  event="project_click"
+                  eventProps={{ project: item.name }}
                   href={item.href as string}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group block"
                 >
                   {body}
-                </a>
+                </TrackedLink>
               ) : (
                 <div className="group">{body}</div>
               )}

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { content } from '@/data/content';
+import { trackEvent } from '@/lib/analytics';
 import ThemeToggle from './ThemeToggle';
 
 const { nav } = content;
@@ -12,12 +13,22 @@ export default function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    // Report each section at most once per page load, so the numbers read as
+    // "how far down did people get" rather than "how much did they scrub".
+    const reported = new Set<string>();
+
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
           .filter((entry) => entry.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
-        if (visible) setActive(visible.target.id);
+        if (!visible) return;
+
+        setActive(visible.target.id);
+        if (!reported.has(visible.target.id)) {
+          reported.add(visible.target.id);
+          trackEvent('section_view', { section: visible.target.id });
+        }
       },
       // Only count a section as active once it reaches the upper third.
       { rootMargin: '-20% 0px -65% 0px', threshold: 0 },

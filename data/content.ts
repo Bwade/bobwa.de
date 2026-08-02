@@ -67,15 +67,15 @@ export const content = {
     blurb:
       'I own Core Engineering and Solutions Engineering at Button: 13 engineers across two functions running the platform behind $100B+ in driven mobile commerce. Nineteen years building technical organizations, more than ten of them in management, and still hands on enough to fix the systems before I fix the org that owns them. Separately I founded a consultancy that stands companies up end to end.',
     /**
-     * Portrait shown next to the hero text.
+     * Portrait shown next to the hero text. Set `src` to null to hide it
+     * entirely; the hero then renders text only and never shows a broken image.
      *
-     * TODO: drop a headshot at public/bob-wade.jpg (square or 4:5, at least
-     * 800px on the short edge) and change `src` below from null to
-     * '/bob-wade.jpg'. While `src` is null the hero renders text only, so
-     * there is never a broken image.
+     * public/bob-wade.jpg is the LinkedIn headshot, regraded for the web:
+     * shadow floor lifted off pure black, slightly warmed and desaturated, and
+     * extended to 4:5 with headroom above. Replace the file to swap the photo.
      */
     portrait: {
-      src: null as string | null,
+      src: '/bob-wade.jpg' as string | null,
       alt: 'Bob Wade',
     },
     primaryCta: { label: 'Download Résumé', href: '/Robert_Wade_Resume.pdf' },

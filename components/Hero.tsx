@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Download, Mail } from 'lucide-react';
 import { content } from '@/data/content';
 import { icons, type IconKey } from './icons';
+import TrackedLink from './TrackedLink';
 
 const { hero } = content;
 
@@ -27,22 +28,26 @@ export default function Hero() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center gap-3">
-          <a
+          <TrackedLink
+            event="resume_download"
+            eventProps={{ variant: 'designed', location: 'hero' }}
             href={hero.primaryCta.href}
             download
             className="inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-paper-raised transition-colors hover:bg-accent-strong dark:text-[#0f1214]"
           >
             <Download aria-hidden="true" className="size-4" strokeWidth={1.75} />
             {hero.primaryCta.label}
-          </a>
+          </TrackedLink>
 
-          <a
+          <TrackedLink
+            event="email_click"
+            eventProps={{ location: 'hero' }}
             href={hero.secondaryCta.href}
             className="inline-flex items-center gap-2 rounded-full border border-rule-strong px-5 py-2.5 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
           >
             <Mail aria-hidden="true" className="size-4" strokeWidth={1.75} />
             {hero.secondaryCta.label}
-          </a>
+          </TrackedLink>
         </div>
 
         <ul className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2">
@@ -50,7 +55,9 @@ export default function Hero() {
             const Icon = icons[link.icon as IconKey];
             return (
               <li key={link.href}>
-                <a
+                <TrackedLink
+                  event="social_click"
+                  eventProps={{ network: link.icon, location: 'hero' }}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -58,27 +65,27 @@ export default function Hero() {
                 >
                   <Icon aria-hidden="true" className="size-3.5" strokeWidth={1.75} />
                   {link.label}
-                </a>
+                </TrackedLink>
               </li>
             );
           })}
         </ul>
       </div>
 
-      {/* Rendered only once hero.portrait.src is set, so there is never a broken
-          image. Desaturated by default and full colour on hover: an editorial
-          treatment that reads calmer than a raw photo drop-in. */}
+      {/* Rendered only when hero.portrait.src is set, so there is never a broken
+          image. The grade is baked into the file rather than applied as a CSS
+          filter, so it looks identical everywhere and costs nothing to paint. */}
       {portrait && (
         <figure className="order-first lg:order-none lg:pt-2">
-          <div className="relative w-40 overflow-hidden rounded-sm border border-rule sm:w-48 lg:w-56">
+          <div className="w-40 overflow-hidden rounded-sm border border-rule sm:w-48 lg:w-56">
             <Image
               src={portrait}
               alt={hero.portrait.alt}
-              width={448}
-              height={560}
+              width={1000}
+              height={1250}
               priority
               sizes="(min-width: 1024px) 14rem, (min-width: 640px) 12rem, 10rem"
-              className="aspect-[4/5] w-full object-cover object-top grayscale contrast-[1.03] transition-[filter] duration-500 hover:grayscale-0"
+              className="aspect-[4/5] w-full object-cover"
             />
           </div>
         </figure>

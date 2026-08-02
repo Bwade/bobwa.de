@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { Moon, Sun } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 /**
  * Deliberately stateless. The inline script in layout.tsx already put the right
@@ -24,6 +25,7 @@ export default function ThemeToggle() {
     const nowDark = !document.documentElement.classList.contains('dark');
     document.documentElement.classList.toggle('dark', nowDark);
     localStorage.setItem('theme', nowDark ? 'dark' : 'light');
+    trackEvent('theme_change', { theme: nowDark ? 'dark' : 'light' });
   }
 
   return (

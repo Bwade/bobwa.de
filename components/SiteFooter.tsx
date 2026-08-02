@@ -1,6 +1,7 @@
 import { FileText } from 'lucide-react';
 import { content } from '@/data/content';
 import { icons, type IconKey } from './icons';
+import TrackedLink from './TrackedLink';
 
 const { contact } = content;
 
@@ -27,27 +28,42 @@ export default function SiteFooter() {
           {contact.blurb}
         </p>
 
-        <a
+        <TrackedLink
+          event="email_click"
+          eventProps={{ location: 'footer' }}
           href={`mailto:${contact.email}`}
           className="mt-8 inline-block border-b border-rule-strong pb-1 text-lg text-ink transition-colors hover:border-accent hover:text-accent sm:text-xl"
         >
           {contact.email}
-        </a>
+        </TrackedLink>
 
         <ul className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3">
           {contact.links.map((link) => {
             const Icon = icons[link.icon as IconKey];
             const external = link.href.startsWith('http');
-            return (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="inline-flex items-center gap-1.5 text-sm text-ink-muted transition-colors hover:text-accent"
-                >
+            const shared = {
+              href: link.href,
+              ...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {}),
+              className:
+                'inline-flex items-center gap-1.5 text-sm text-ink-muted transition-colors hover:text-accent',
+              children: (
+                <>
                   <Icon aria-hidden="true" className="size-3.5" strokeWidth={1.75} />
                   {link.label}
-                </a>
+                </>
+              ),
+            };
+            return (
+              <li key={link.href}>
+                {link.icon === 'mail' ? (
+                  <TrackedLink event="email_click" eventProps={{ location: 'footer' }} {...shared} />
+                ) : (
+                  <TrackedLink
+                    event="social_click"
+                    eventProps={{ network: link.icon, location: 'footer' }}
+                    {...shared}
+                  />
+                )}
               </li>
             );
           })}
@@ -57,14 +73,16 @@ export default function SiteFooter() {
           <p className="text-sm text-ink-faint">
             (c) {year} {contact.copyrightName}
           </p>
-          <a
+          <TrackedLink
+            event="resume_download"
+            eventProps={{ variant: 'ats', location: 'footer' }}
             href={contact.atsResume.href}
             download
             className="inline-flex items-center gap-1.5 text-sm text-ink-faint transition-colors hover:text-accent"
           >
             <FileText aria-hidden="true" className="size-3.5" strokeWidth={1.75} />
             {contact.atsResume.label}
-          </a>
+          </TrackedLink>
         </div>
       </div>
     </footer>

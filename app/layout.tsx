@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Newsreader } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { content } from '@/data/content';
 import './globals.css';
 
@@ -92,7 +94,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: noFlashTheme }} />
       </head>
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        {children}
+        {/* Cookieless and first party, so no consent banner and no third party
+            script domain. Both are served from /_vercel/* by the platform. */}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

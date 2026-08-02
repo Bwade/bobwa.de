@@ -67,8 +67,9 @@ To use different filenames, update `hero.primaryCta.href` and
 
 | File              | What it is                    | Notes                                                         |
 | ----------------- | ----------------------------- | ------------------------------------------------------------- |
-| `public/og.png`   | Social share card, 1200 x 630 | Placeholder. Replace with a designed card, same name and size. |
-| `public/icon.svg` | Favicon, an "RW" monogram     | Placeholder. Replace with real artwork if you want.            |
+| `public/og.png`      | Social share card, 1200 x 630 | Generated placeholder. Replace with a designed card, same name and size.       |
+| `public/icon.svg`    | Favicon, a "BW" monogram      | Placeholder. Replace with real artwork if you want.                            |
+| `public/bob-wade.jpg`| Hero portrait, 4:5            | Regraded LinkedIn headshot. Replace the file to swap it, or set `src` to null. |
 
 Both are referenced by path, so replacing the file is the whole job.
 
@@ -110,6 +111,40 @@ If you are starting from a fresh Vercel project and want to attach a domain:
    break email for the domain.
 4. Wait for Vercel to verify. TLS certificates are issued and renewed
    automatically, at no cost.
+
+## Analytics
+
+Vercel Web Analytics and Speed Insights, both first party. No Google Analytics,
+no tag manager, no third party script domain, and no cookies, so the site needs
+no consent banner. Both scripts are served from `/_vercel/*` by the platform
+itself, which is why they work even though this is a static export.
+
+They only report on the deployed site. On `localhost` the calls are no-ops, so
+you will not see local traffic in the dashboard.
+
+### Events
+
+Custom events are defined in one place, [`lib/analytics.ts`](lib/analytics.ts).
+The `EventMap` type there is the single source of truth: event names are
+autocompleted and property shapes are checked at compile time, so a typo is a
+build error rather than a silently missing metric.
+
+| Event              | Fires when                          | Properties                                    |
+| ------------------ | ----------------------------------- | --------------------------------------------- |
+| `resume_download`  | Either résumé link is clicked       | `variant: designed \| ats`, `location`         |
+| `email_click`      | Any mailto link is clicked          | `location: hero \| footer`                     |
+| `social_click`     | LinkedIn or GitHub is clicked       | `network`, `location`                          |
+| `project_click`    | A Selected work item is clicked     | `project`                                      |
+| `theme_change`     | The dark mode toggle is used        | `theme: dark \| light`                         |
+| `section_view`     | A section scrolls into view         | `section`                                      |
+
+`section_view` fires at most once per section per page load, so the numbers read
+as "how far down did people get" rather than "how much did they scroll around".
+
+To add an event: add a line to `EventMap`, then call `trackEvent('name', {...})`
+from a client component, or use [`components/TrackedLink.tsx`](components/TrackedLink.tsx)
+for anything that is a link. `TrackedLink` reports and then lets the browser
+navigate normally, so it never delays or swallows the click.
 
 ## Cost
 
