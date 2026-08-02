@@ -1,15 +1,19 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { content } from '@/data/content';
 
-const { traits, hero } = content;
+const { traits } = content;
 
 /**
- * A tall section with a sticky, full-height portrait. Three sentinels, one per
- * viewport of scroll, decide which word is showing, so the words cross-fade as
+ * A tall section with a sticky, full-height panel. Three sentinels, one per
+ * viewport of scroll, decide which trait is showing, so the words cross-fade as
  * you move rather than animating on a timer.
+ *
+ * There is deliberately no portrait here. The face is already the hero, and a
+ * second one competes with the word that is the actual content of this section.
+ * Each trait carries its supporting number instead, set huge and nearly
+ * transparent behind the word.
  *
  * Every word is in the DOM the whole time and only opacity changes, so the text
  * is present for search engines and screen readers regardless of scroll state.
@@ -41,7 +45,7 @@ export default function EdTraits() {
     <section
       aria-labelledby="traits-heading"
       className="bg-ed-dark text-ed-dark-ink relative"
-      // One viewport of scroll per word.
+      // One viewport of scroll per trait.
       style={{ height: `${traits.items.length * 100}vh` }}
     >
       <h2 id="traits-heading" className="sr-only">
@@ -49,22 +53,21 @@ export default function EdTraits() {
       </h2>
 
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <Image
-          src="/bob-mono.webp"
-          alt={hero.portrait.alt}
-          fill
-          sizes="100vw"
-          className="object-cover object-[58%_center]"
-          priority={false}
-        />
-
-        {/* The asset already fades to black on the left. This is a gentle second
-            pass so the word stays legible at any crop, including narrow
-            viewports where the baked black field gets cropped away. */}
-        <div
-          aria-hidden="true"
-          className="from-ed-dark via-ed-dark/45 absolute inset-0 bg-gradient-to-r to-transparent"
-        />
+        {/* Ghosted proof numeral. Decorative: the same figure is stated in the
+            line below, so it is hidden from assistive tech rather than read
+            out twice. */}
+        <div aria-hidden="true" className="absolute inset-0 flex items-center justify-end pr-[5vw]">
+          {traits.items.map((item, index) => (
+            <span
+              key={item.word}
+              className={`ed-display absolute text-[clamp(6rem,19vw,17rem)] leading-none tracking-tight transition-opacity duration-1000 ease-out ${
+                active === index ? 'opacity-[0.07]' : 'opacity-0'
+              }`}
+            >
+              {item.proof}
+            </span>
+          ))}
+        </div>
 
         <div className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-center px-6 sm:px-10">
           <p className="ed-label text-ed-accent-dark">{traits.label}</p>
