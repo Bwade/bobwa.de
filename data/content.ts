@@ -17,6 +17,11 @@ export type WorkItem = {
   tags: string[];
   /** Optional. Omit or set to null to render the row without a link. */
   href?: string | null;
+  /**
+   * Optional brand marks shown alongside the row. Only for design work, where
+   * the artwork is the evidence and a sentence claiming it is not.
+   */
+  marks?: { src: string; alt: string; width: number; height: number }[];
 };
 
 export type Role = {
@@ -434,6 +439,12 @@ export const content = {
           'Brand and logo for Digital Tide and That Paleo Chick, plus the UI and UX for the apps I have shipped. I design what I build.',
         tags: ['Brand', 'UI/UX', 'Figma'],
         href: null,
+        // Both marks are shown in one colour so they read as a set against the
+        // panel rather than dragging two unrelated brand palettes into it.
+        marks: [
+          { src: '/marks/digital-tide.webp', alt: 'Digital Tide', width: 640, height: 502 },
+          { src: '/marks/that-paleo-chick.svg', alt: 'That Paleo Chick', width: 475, height: 603 },
+        ],
       },
       {
         name: 'Digital Tide',

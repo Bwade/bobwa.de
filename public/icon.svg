@@ -1,14 +1,18 @@
-<!-- TODO: placeholder favicon. Swap this file for real artwork if you want something custom.
-     "BW" monogram in the deep teal accent. -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="BW">
-  <rect width="64" height="64" rx="14" fill="#0d5c63"/>
-  <text
-    x="32"
-    y="43"
-    text-anchor="middle"
-    font-family="Georgia, 'Times New Roman', serif"
-    font-size="29"
-    letter-spacing="-1"
-    fill="#faf8f4"
-  >BW</text>
+<!-- "bw" monogram: a single-weight lowercase mark, drawn as a stem with a bowl
+     and a true zigzag w. Stroke weight is set heavy enough to survive a 16px
+     favicon, where a hairline mark would disappear entirely. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="bw">
+  <rect width="64" height="64" rx="13" fill="#0c0d0e"/>
+  <g
+    transform="translate(8 8.45) scale(0.466) translate(-11.5 4.5)"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="9"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M 16 0 L 16 92"/>
+    <path d="M 16 46 C 58 46 58 92 16 92"/>
+    <path d="M 70 46 L 79 92 L 90 64 L 101 92 L 110 46"/>
+  </g>
 </svg>

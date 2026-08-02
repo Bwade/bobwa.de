@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 import { content } from '@/data/content';
 import TrackedLink from '@/components/TrackedLink';
@@ -38,6 +39,23 @@ export default function EdWork() {
                   <p className="text-ed-dark-ink/65 max-w-prose leading-relaxed">
                     {item.description}
                   </p>
+                  {'marks' in item && item.marks && (
+                    <ul className="mt-7 mb-8 flex flex-wrap items-center gap-x-12 gap-y-6">
+                      {item.marks.map((mark) => (
+                        <li key={mark.src}>
+                          <Image
+                            src={mark.src}
+                            alt={`${mark.alt} logo`}
+                            width={mark.width}
+                            height={mark.height}
+                            // Matched on height so the two lockups sit as a set.
+                            className="h-24 w-auto sm:h-32"
+                          />
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
                   <ul className="mt-5 flex flex-wrap gap-2">
                     {item.tags.map((tag) => (
                       <li
