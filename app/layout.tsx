@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Newsreader } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { content } from '@/data/content';
 import './globals.css';
 
@@ -84,6 +85,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             script domain. Both are served from /_vercel/* by the platform. */}
         <Analytics />
         <SpeedInsights />
+        {/* GA4, loaded after hydration by next/third-parties so it does not
+            block the first paint. Custom events are mirrored here from
+            lib/analytics.ts. Unlike the two above, this one sets cookies. */}
+        {site.gaMeasurementId && <GoogleAnalytics gaId={site.gaMeasurementId} />}
       </body>
     </html>
   );

@@ -49,6 +49,12 @@ export const content = {
      * filename, same dimensions, and nothing else needs to change.
      */
     ogImage: '/og.png',
+    /**
+     * GA4 measurement ID. Public by design, it ends up in the page source.
+     * Set to null to remove Google Analytics entirely; Vercel Web Analytics is
+     * independent of this and keeps running either way.
+     */
+    gaMeasurementId: 'G-W1KNWFDXGV' as string | null,
   },
 
   nav: {
