@@ -50,18 +50,20 @@ export default function EdTraits() {
 
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <Image
-          src="/bob-wade-mono.jpg"
+          src="/bob-mono.jpg"
           alt={hero.portrait.alt}
           fill
           sizes="100vw"
-          className="object-cover object-[70%_center]"
+          className="object-cover object-[58%_center]"
           priority={false}
         />
-        {/* Darkens the left side so the word always has something to sit on,
-            whatever the viewport shape. */}
+
+        {/* The asset already fades to black on the left. This is a gentle second
+            pass so the word stays legible at any crop, including narrow
+            viewports where the baked black field gets cropped away. */}
         <div
           aria-hidden="true"
-          className="from-ed-dark via-ed-dark/70 absolute inset-0 bg-gradient-to-r to-transparent"
+          className="from-ed-dark via-ed-dark/45 absolute inset-0 bg-gradient-to-r to-transparent"
         />
 
         <div className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-center px-6 sm:px-10">

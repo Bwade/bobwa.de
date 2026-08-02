@@ -7,40 +7,55 @@ import Reveal from './Reveal';
 
 const { hero } = content;
 
+/**
+ * The portrait bleeds off the edge of the section and dissolves into the paper
+ * rather than sitting in a frame. The dissolve is a CSS mask, so the file stays
+ * a clean photograph and the fade always matches the background colour exactly.
+ *
+ * Mobile puts the image across the top and fades it downward; from `lg` it moves
+ * to the right and fades leftward, behind the display type.
+ */
 export default function EdHero() {
   return (
     <section
       id="top"
-      className="bg-ed-paper text-ed-ink relative flex min-h-[92vh] flex-col justify-between gap-12 px-6 pt-28 pb-10 sm:px-10 sm:pt-32"
+      className="bg-ed-paper text-ed-ink relative isolate flex min-h-svh flex-col justify-between overflow-hidden px-6 pb-10 sm:px-10"
     >
-      <Reveal className="mx-auto flex w-full max-w-6xl flex-[1_1_auto] flex-col justify-center">
-        <p className="ed-label text-ed-accent">{hero.title}</p>
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 -z-10 h-[46svh] [mask-image:linear-gradient(to_bottom,black_52%,transparent_96%)] [-webkit-mask-image:linear-gradient(to_bottom,black_52%,transparent_96%)] lg:inset-y-0 lg:right-0 lg:left-auto lg:h-auto lg:w-[54%] lg:[mask-image:linear-gradient(to_right,transparent_2%,black_46%)] lg:[-webkit-mask-image:linear-gradient(to_right,transparent_2%,black_46%)]"
+      >
+        <Image
+          src="/bob-hero.jpg"
+          alt={hero.portrait.alt}
+          fill
+          priority
+          sizes="(min-width: 1024px) 54vw, 100vw"
+          className="object-cover object-[58%_18%] lg:object-[52%_22%]"
+        />
+      </div>
 
-        {/* The name and the portrait share a row on wide screens, so the photo
-            sits with the display type rather than being parked beside body copy. */}
-        <div className="mt-6 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-14">
-          <h1 className="ed-display order-2 text-[clamp(3.5rem,11.5vw,9.5rem)] lg:order-1">
-            {hero.name}
-          </h1>
+      {/* Scrims. The photo runs under the nav and the bottom rail, and its
+          bright office background leaves both illegible without these. */}
+      <div
+        aria-hidden="true"
+        className="from-ed-paper pointer-events-none absolute inset-x-0 top-0 -z-10 h-24 bg-gradient-to-b via-transparent to-transparent"
+      />
+      <div
+        aria-hidden="true"
+        className="from-ed-paper pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t via-transparent to-transparent"
+      />
 
-          <div className="order-1 w-44 shrink-0 overflow-hidden sm:w-52 lg:order-2 lg:w-72 xl:w-80">
-            <Image
-              src="/bob-wade-hero.jpg"
-              alt={hero.portrait.alt}
-              width={640}
-              height={800}
-              priority
-              sizes="(min-width: 1280px) 20rem, (min-width: 1024px) 18rem, (min-width: 640px) 13rem, 11rem"
-              className="aspect-[4/5] w-full object-cover"
-            />
-          </div>
-        </div>
+      <Reveal className="mx-auto flex w-full max-w-6xl flex-[1_1_auto] flex-col justify-center pt-[42svh] pb-16 lg:pt-40 lg:pb-24">
+        <p className="ed-label text-ed-accent max-w-xl lg:max-w-lg">{hero.title}</p>
 
-        <p className="text-ed-ink/70 mt-10 max-w-2xl text-lg leading-relaxed sm:text-xl">
+        <h1 className="ed-display mt-7 text-[clamp(3.25rem,10vw,8.5rem)]">{hero.name}</h1>
+
+        <p className="text-ed-ink/75 mt-8 max-w-xl text-lg leading-relaxed sm:text-xl">
           {hero.blurb}
         </p>
 
-        <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-3">
+        <div className="mt-10 flex flex-wrap items-center gap-3">
           <TrackedLink
             event="resume_download"
             eventProps={{ variant: 'designed', location: 'hero' }}
@@ -64,7 +79,7 @@ export default function EdHero() {
         </div>
       </Reveal>
 
-      <div className="border-ed-rule mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-4 border-t pt-6">
+      <div className="border-ed-rule mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-3 border-t pt-6">
         <p className="text-ed-muted inline-flex items-center gap-1.5 text-sm">
           <MapPin aria-hidden="true" className="size-3.5" strokeWidth={1.75} />
           {hero.location}

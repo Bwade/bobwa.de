@@ -16,6 +16,7 @@ const sectionIds = nav.links.map((link) => link.href.replace('#', ''));
  */
 export default function EdNav() {
   const [onDark, setOnDark] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string | null>(null);
 
   useEffect(() => {
@@ -59,6 +60,7 @@ export default function EdNav() {
         }
       }
       setOnDark(dark);
+      setScrolled(window.scrollY > 24);
     };
 
     onScroll();
@@ -71,13 +73,23 @@ export default function EdNav() {
   }, []);
 
   const tone = onDark ? 'text-ed-dark-ink' : 'text-ed-ink';
-  const muted = onDark ? 'text-ed-dark-ink/55' : 'text-ed-muted';
+  const muted = onDark ? 'text-ed-dark-ink/70' : 'text-ed-muted';
 
   return (
-    <header className="pointer-events-none fixed inset-x-0 top-0 z-50">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        // Transparent over the hero, then an opaque bar so content never reads
+        // through the links as it scrolls past.
+        scrolled
+          ? onDark
+            ? 'bg-ed-dark/90 backdrop-blur-md'
+            : 'bg-ed-paper/90 backdrop-blur-md'
+          : ''
+      }`}
+    >
       <nav
         aria-label="Primary"
-        className="pointer-events-auto mx-auto flex h-16 max-w-6xl items-center gap-4 px-6 sm:px-10"
+        className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-6 sm:px-10"
       >
         <a href="#top" className={`ed-display hidden text-2xl transition-colors sm:block ${tone}`}>
           {nav.brand}
