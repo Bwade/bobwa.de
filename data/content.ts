@@ -129,25 +129,17 @@ export const content = {
    */
   traits: {
     label: 'How I work',
-    /**
-     * `proof` is set very large and nearly transparent behind the word. It is
-     * decorative reinforcement of the line beneath, so it is hidden from
-     * assistive tech: the same number is already stated in `line`.
-     */
     items: [
       {
         word: 'Unflappable',
-        proof: '99.99%',
         line: 'Prime Day at twelve times baseline. A Super Bowl at 2.6x its planned peak. Four nines, sustained, because on-call and severity were rebuilt from nothing rather than hoped over.',
       },
       {
         word: 'Hands-on',
-        proof: '45%',
         line: 'Close enough to the code to catch a bad architecture before it ships. I fix the system, then I fix the organization that let it happen.',
       },
       {
         word: 'Commercial',
-        proof: '+20%',
         line: 'Onboarding down 30%. Revenue per integration up 20%. A retail media line stood up from zero. I also found and run my own businesses.',
       },
     ],

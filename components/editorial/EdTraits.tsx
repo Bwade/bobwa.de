@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { content } from '@/data/content';
 
@@ -12,8 +13,10 @@ const { traits } = content;
  *
  * There is deliberately no portrait here. The face is already the hero, and a
  * second one competes with the word that is the actual content of this section.
- * Each trait carries its supporting number instead, set huge and nearly
- * transparent behind the word.
+ * The backdrop is a generated visual instead: traffic traces spiking through a
+ * peak and settling back to baseline, which is literally the work being
+ * described. Generated rather than stock, and it fades to black on the left so
+ * the display word always has a clean field.
  *
  * Every word is in the DOM the whole time and only opacity changes, so the text
  * is present for search engines and screen readers regardless of scroll state.
@@ -53,42 +56,21 @@ export default function EdTraits() {
       </h2>
 
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Ghosted proof numeral. Purely decorative: the same figure is stated
-            in the line below, so it is hidden from assistive tech rather than
-            announced twice.
+        <Image
+          src="/signal.webp"
+          alt=""
+          aria-hidden="true"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
 
-            Drawn as SVG rather than HTML text on purpose. At 7% opacity this is
-            a watermark, not content, but axe measures contrast on any visible
-            HTML text regardless of aria-hidden and (correctly, by its own
-            rules) fails it at 1.15:1. Making it darker or lighter to satisfy
-            that would destroy the effect, so it stops being text instead. */}
-        <div aria-hidden="true" className="absolute inset-0 flex items-center justify-end pr-[5vw]">
-          {traits.items.map((item, index) => (
-            <svg
-              key={item.word}
-              viewBox="0 0 400 120"
-              preserveAspectRatio="xMaxYMid meet"
-              focusable="false"
-              className={`absolute w-[min(94vw,68rem)] transition-opacity duration-1000 ease-out ${
-                active === index ? 'opacity-[0.07]' : 'opacity-0'
-              }`}
-            >
-              <text
-                x="400"
-                y="97"
-                textAnchor="end"
-                fontSize="112"
-                fill="currentColor"
-                style={{
-                  fontFamily: 'var(--font-newsreader), ui-serif, Georgia, serif',
-                  letterSpacing: '-0.03em',
-                }}
-              >
-                {item.proof}
-              </text>
-            </svg>
-          ))}
-        </div>
+        {/* Second pass over the baked-in fade, so the word stays legible at any
+            crop including narrow viewports that lose the black field. */}
+        <div
+          aria-hidden="true"
+          className="from-ed-dark via-ed-dark/55 absolute inset-0 bg-gradient-to-r to-transparent"
+        />
 
         <div className="absolute inset-0 mx-auto flex max-w-6xl flex-col justify-center px-6 sm:px-10">
           <p className="ed-label text-ed-accent-dark">{traits.label}</p>
