@@ -74,17 +74,8 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * Applies the stored (or system) theme before first paint so the page never
- * flashes the wrong background. Kept tiny and inline on purpose.
- */
-const noFlashTheme = `
-(function(){try{
-  var s=localStorage.getItem('theme');
-  var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
-  document.documentElement.classList.toggle('dark',d);
-}catch(e){}})();
-`;
+// The editorial variant commits to one palette: alternating light and near-black
+// panels are the design. There is no theme toggle here, so no no-flash script.
 
 /**
  * Google Consent Mode v2 defaults. Runs before the GA tag, denying every
@@ -111,16 +102,11 @@ const consentDefaults = `
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${inter.variable} ${newsreader.variable} h-full`}
-    >
+    <html lang="en" className={`${inter.variable} ${newsreader.variable} h-full`}>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: noFlashTheme }} />
         <script dangerouslySetInnerHTML={{ __html: consentDefaults }} />
       </head>
-      <body className="flex min-h-full flex-col">
+      <body className="bg-ed-paper flex min-h-full flex-col">
         {children}
         <ConsentBanner />
         {/* Cookieless and first party, so these need no consent and carry no

@@ -41,7 +41,7 @@ export const content = {
     url: 'https://bobwa.de',
     title: 'Bob Wade, Senior Engineering Manager',
     description:
-      'Senior Engineering Manager at Button owning Core Engineering and Solutions Engineering: 13 engineers behind $100B+ in mobile commerce. 19 years in engineering, 10+ in management.',
+      'I run the platform behind $100B+ in mobile commerce at Button. Two engineering functions, 13 people, four nines sustained through Prime Day and a Super Bowl.',
     locale: 'en_US',
     /**
      * Social share card, 1200x630, committed at public/og.png.
@@ -83,10 +83,10 @@ export const content = {
 
   hero: {
     name: 'Bob Wade',
-    title: 'Engineering Leader: Platform & Reliability, Partner & Product, AI-Augmented Ops',
+    title: 'Senior Engineering Manager at Button',
     /** Two or three sentences. Keep it tight. This is the whole pitch. */
     blurb:
-      "I own Core Engineering and Solutions Engineering at Button: 13 engineers behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. I take over unstable orgs and leave behind reliable, automated systems. Nineteen years in engineering, more than ten in management, and I still found and run commerce businesses end to end.",
+      'Two engineering functions, thirteen people, and the platform every partner and every dollar flows through. I take over systems that wobble and leave behind ones that hold.',
     /**
      * Shown under the hero CTAs and fed into the structured data. Naming the
      * metro as well as the town is deliberate: recruiters search "Nashville",
@@ -117,16 +117,38 @@ export const content = {
 
   /** Four metric cards. `value` is the big number, `label` the caption. */
   impact: [
-    { value: '$100B+', label: 'mobile commerce driven' },
-    { value: '99.99%', label: 'platform uptime' },
-    { value: '130M+', label: 'Amazon clicks / month' },
-    { value: '13 / 2', label: 'engineers and functions owned' },
+    { value: '$100B+', label: 'commerce moved' },
+    { value: '99.99%', label: 'uptime, sustained' },
+    { value: '130M+', label: 'Amazon clicks a month' },
+    { value: '13 / 2', label: 'engineers, functions owned' },
   ],
+
+  /**
+   * design/editorial-scroll only. Three words revealed over the portrait in the
+   * sticky panel. Keep them to one word each; they are set very large.
+   */
+  traits: {
+    label: 'How I work',
+    items: [
+      {
+        word: 'Unflappable',
+        line: 'Prime Day at twelve times baseline. A Super Bowl at 2.6x its planned peak. Four nines, sustained, because on-call and severity were rebuilt from nothing rather than hoped over.',
+      },
+      {
+        word: 'Hands-on',
+        line: 'Close enough to the code to catch a bad architecture before it ships. I fix the system, then I fix the organization that let it happen.',
+      },
+      {
+        word: 'Commercial',
+        line: 'Onboarding down 30%. Revenue per integration up 20%. A retail media line stood up from zero. I also found and run my own businesses.',
+      },
+    ],
+  },
 
   about: {
     heading: 'About',
     /** One short paragraph. */
-    body: "I'm a Senior Engineering Manager at Button, owning two engineering functions and 13 engineers behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. Nineteen years in engineering, more than ten in management. I take over unstable orgs and leave behind reliable, automated systems: I rebuilt on-call to 99.99% uptime, held the platform through a Super Bowl at 2.6x its planned peak with errors flat, and run delivery increasingly on AI-augmented workflows. I also found and run commerce businesses end to end, from engineering and product through brand and design.",
+    body: 'Every org I have inherited looked the same on day one: on-call improvised, severity undefined, the team firefighting instead of building. I rebuild that layer first. On-call from scratch to four nines. Interrupts down thirty percent. Release cycles from two months to three weeks. Then I rebuild the organization that owns it, because a system only stays fixed when the people around it are set up to keep it that way. Nineteen years in, ten of them managing, and I still found and run my own companies. That is why I argue for the version that ships.',
   },
 
   whatIDo: {
@@ -135,25 +157,25 @@ export const content = {
       {
         title: 'Platform Reliability & Scale',
         description:
-          'Incident command, on-call and severity design, blameless postmortems, SLAs, and peak load readiness. Prime Day and Super Bowl scale events, planned rather than survived.',
+          'Prime Day at twelve times baseline. A Super Bowl at 2.6x its planned peak, errors flat. I plan for the spike instead of surviving it: capacity, load tests, incident command, and postmortems that actually change something.',
         icon: 'activity',
       },
       {
         title: 'Partner Integrations',
         description:
-          'The technical and relationship surface between us and the largest merchants on the internet. Enterprise integrations, tiered SLAs, escalation models, and attribution pipelines.',
+          'Amazon, Walmart, Best Buy, Target, Nike, Marriott, Disney+. I own the technical surface those relationships run on, plus the tiered SLAs and escalation paths that stop every issue becoming a fire drill.',
         icon: 'plug',
       },
       {
         title: 'AI-Augmented Delivery',
         description:
-          'Claude and MCP in the delivery loop where it compounds: review, scaffolding, migrations, and tightly scoped internal tooling built so it cannot hallucinate its way into production.',
+          'Claude and MCP inside the delivery loop, not bolted onto it. Around 45% of shipped lines and two thirds of merged PRs, with tooling scoped tightly enough that it cannot invent its way into production.',
         icon: 'sparkles',
       },
       {
         title: 'Product & Design',
         description:
-          'Roadmapping, capacity planning, and the feasibility gate between revenue, product, and engineering. Enough craft to work in Figma and the front end myself, so I can show the idea rather than only describe it.',
+          'I sit in the feasibility gate between revenue, product, and engineering. I can also open Figma and build the front end, so I argue with a prototype instead of a paragraph.',
         icon: 'compass',
       },
     ],
@@ -370,21 +392,21 @@ export const content = {
       {
         name: 'Sanbar',
         description:
-          "Built the client's entire technical foundation: GCP and AWS infrastructure, DNS, email and identity, deployment pipeline, and production site.",
+          'The client had an idea and nothing else. I built the whole technical foundation: GCP and AWS, DNS, email and identity, deployment pipeline, and the production site.',
         tags: ['Infrastructure', 'GCP', 'AWS'],
         href: 'https://sanbar.us',
       },
       {
         name: 'That Paleo Chick',
         description:
-          'Built the business, not just the site. AWS infrastructure, email, automated social content and scheduling via Postiz, and affiliate monetization, running as a near fully automated operation.',
+          'Not just the site, the business. AWS, transactional and marketing email, social content produced and scheduled automatically through Postiz, and affiliate monetization. It runs itself.',
         tags: ['E-commerce', 'Automation', 'AWS'],
         href: 'https://thatpaleochick.com',
       },
       {
         name: 'Greedy',
         description:
-          'Ran project management for the full site redesign, covering scope, vendors, and launch. Own social marketing and paid acquisition: a Meta Ad Library driven competitive playbook plus AI generated video creative.',
+          'Ran the full site redesign end to end, from scope through vendors to launch. Own social and paid acquisition, including a competitive playbook built from live Meta Ad Library teardowns and AI generated video creative.',
         tags: ['Program management', 'Growth', 'Paid media'],
         // TODO: add a public link when there is one.
         href: null,
@@ -392,21 +414,21 @@ export const content = {
       {
         name: 'Charter',
         description:
-          'Designed and built an invoicing application end to end: auth, billing entities, invoice generation, and payment tracking.',
+          'An invoicing product, designed and built solo: auth, billing entities, invoice generation, and payment tracking.',
         tags: ['Product', 'Next.js', 'Clerk'],
         href: 'https://charter.digitalti.de',
       },
       {
         name: 'Brand & product design',
         description:
-          'Brand and logo work for Digital Tide and That Paleo Chick, plus the UI/UX for the apps I have shipped.',
+          'Brand and logo for Digital Tide and That Paleo Chick, plus the UI and UX for the apps I have shipped. I design what I build.',
         tags: ['Brand', 'UI/UX', 'Figma'],
         href: null,
       },
       {
         name: 'Digital Tide',
         description:
-          'The same playbook applied to my own firm, plus the standards clients inherit: Linear first delivery, GitHub Actions CI, and Slack automation.',
+          'My own firm, run on the standards clients inherit: Linear first delivery, GitHub Actions CI, and Slack automation.',
         tags: ['Studio', 'Consulting', 'Full-stack'],
         href: 'https://digitalti.de',
       },
@@ -416,7 +438,7 @@ export const content = {
   contact: {
     heading: 'Get in touch',
     blurb:
-      'Open to conversations about platform and engineering leadership roles, advisory work, or an interesting build.',
+      'If you are hiring for platform or engineering leadership and want someone who will own both the system and the people, I would like to hear about it.',
     email: 'bob@bobwa.de',
     links: [
       { label: 'Email', href: 'mailto:bob@bobwa.de', icon: 'mail' },

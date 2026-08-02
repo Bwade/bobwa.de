@@ -70,7 +70,7 @@
 html {
   scroll-behavior: smooth;
   /* Clear the sticky nav when jumping to an anchor. */
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 5rem;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -107,4 +107,111 @@ body {
 ::selection {
   background: var(--accent-wash);
   color: var(--ink);
+}
+
+/* ---------------------------------------------------------------------------
+   design/editorial-scroll variant.
+
+   A second, louder palette that runs alongside the tokens above: alternating
+   full-viewport light and near-black panels, oversized serif display type, and
+   the same deep teal used sparingly so it still reads as the same person.
+   --------------------------------------------------------------------------- */
+@theme inline {
+  --color-ed-paper: #fbfaf8;
+  --color-ed-ink: #101112;
+  --color-ed-dark: #0c0d0e;
+  --color-ed-dark-ink: #f2f0ec;
+  --color-ed-accent: #0d5c63;
+  --color-ed-accent-dark: #7fc8cd;
+  --color-ed-muted: #656b72;
+  --color-ed-rule: rgba(16, 17, 18, 0.14);
+  --color-ed-rule-dark: rgba(242, 240, 236, 0.18);
+}
+
+/* Scroll reveal. Only engages when motion is welcome, so with reduced motion
+   the content is simply visible: no styles applied, nothing to un-hide. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Stagger children without needing a delay prop at every call site. */
+  .reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-stagger[data-visible='true'] > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-stagger[data-visible='true'] > *:nth-child(2) {
+    transition-delay: 90ms;
+  }
+  .reveal-stagger[data-visible='true'] > *:nth-child(3) {
+    transition-delay: 180ms;
+  }
+  .reveal-stagger[data-visible='true'] > *:nth-child(4) {
+    transition-delay: 270ms;
+  }
+  .reveal-stagger[data-visible='true'] > *:nth-child(5) {
+    transition-delay: 360ms;
+  }
+  .reveal-stagger[data-visible='true'] > *:nth-child(6) {
+    transition-delay: 450ms;
+  }
+}
+
+/* Display type that scales with the viewport instead of stepping at breakpoints.
+   Deliberately does NOT set line-height: this class is defined after Tailwind's
+   utilities, so a line-height here silently beats every `leading-*` class at the
+   call site. Leading is set per use instead. */
+.ed-display {
+  font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+
+.ed-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* Section rhythm for the editorial variant. One scale, applied everywhere,
+   instead of each component picking its own padding. */
+.ed-section {
+  padding-block: 7rem;
+}
+
+@media (min-width: 640px) {
+  .ed-section {
+    padding-block: 10rem;
+  }
+}
+
+/* For a section that follows another of the same tone, so the two paddings do
+   not stack into an accidental chasm. Declared after .ed-section because
+   padding-block would otherwise beat any Tailwind pt-* utility. */
+.ed-section-follows {
+  padding-block-start: 0;
+}
+
+/* Standard gap between a section's small label and the content under it. */
+.ed-section-body {
+  margin-top: 3.5rem;
 }
