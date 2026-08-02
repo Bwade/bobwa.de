@@ -3,6 +3,7 @@ import { Inter, Newsreader } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import ConsentBanner from '@/components/ConsentBanner';
 import { content } from '@/data/content';
 import './globals.css';
 
@@ -85,6 +86,29 @@ const noFlashTheme = `
 }catch(e){}})();
 `;
 
+/**
+ * Google Consent Mode v2 defaults. Runs before the GA tag, denying every
+ * storage type, so GA sets no cookies until ConsentBanner grants permission.
+ * A previously stored "granted" choice is reapplied here so returning visitors
+ * are not asked twice.
+ */
+const consentDefaults = `
+(function(){
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=window.gtag||gtag;
+  gtag('consent','default',{
+    ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',
+    analytics_storage:'denied',wait_for_update:500
+  });
+  try{
+    if(localStorage.getItem('analytics-consent')==='granted'){
+      gtag('consent','update',{analytics_storage:'granted'});
+    }
+  }catch(e){}
+})();
+`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -94,11 +118,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: noFlashTheme }} />
+        <script dangerouslySetInnerHTML={{ __html: consentDefaults }} />
       </head>
       <body className="flex min-h-full flex-col">
         {children}
-        {/* Cookieless and first party, so no consent banner and no third party
-            script domain. Both are served from /_vercel/* by the platform. */}
+        <ConsentBanner />
+        {/* Cookieless and first party, so these need no consent and carry no
+            third party script domain. Served from /_vercel/* by the platform. */}
         <Analytics />
         <SpeedInsights />
         {/* GA4, loaded after hydration by next/third-parties so it does not

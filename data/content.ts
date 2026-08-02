@@ -57,6 +57,18 @@ export const content = {
     gaMeasurementId: 'G-W1KNWFDXGV' as string | null,
   },
 
+  /**
+   * Cookie consent. Only shown when Google Analytics is enabled, because the
+   * Vercel analytics is cookieless and needs no permission.
+   */
+  consent: {
+    message:
+      'This site uses Google Analytics, which sets cookies. Visitor counts are also collected without cookies either way.',
+    accept: 'Allow analytics',
+    decline: 'No thanks',
+    ariaLabel: 'Cookie consent',
+  },
+
   nav: {
     /** The wordmark in the sticky top nav. */
     brand: 'Bob Wade',
