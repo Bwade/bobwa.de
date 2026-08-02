@@ -90,7 +90,7 @@ export const content = {
       alt: 'Bob Wade',
     },
     primaryCta: { label: 'Download Résumé', href: '/Robert_Wade_Resume.pdf' },
-    secondaryCta: { label: 'Email me', href: 'mailto:bwade231@gmail.com' },
+    secondaryCta: { label: 'Email me', href: 'mailto:bob@bobwa.de' },
     social: [
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bwade231/', icon: 'linkedin' },
       { label: 'GitHub', href: 'https://github.com/bwade', icon: 'github' },
@@ -399,9 +399,9 @@ export const content = {
     heading: 'Get in touch',
     blurb:
       'Open to conversations about platform and engineering leadership roles, advisory work, or an interesting build.',
-    email: 'bwade231@gmail.com',
+    email: 'bob@bobwa.de',
     links: [
-      { label: 'Email', href: 'mailto:bwade231@gmail.com', icon: 'mail' },
+      { label: 'Email', href: 'mailto:bob@bobwa.de', icon: 'mail' },
       { label: 'LinkedIn', href: 'https://www.linkedin.com/in/bwade231/', icon: 'linkedin' },
       { label: 'GitHub', href: 'https://github.com/bwade', icon: 'github' },
     ],
