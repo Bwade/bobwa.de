@@ -1,0 +1,14 @@
+<!-- TODO: placeholder favicon — swap this file for real artwork if you want something custom.
+     Monogram "RW" in the deep-teal accent on the warm paper background. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="RW">
+  <rect width="64" height="64" rx="14" fill="#0d5c63"/>
+  <text
+    x="32"
+    y="43"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="30"
+    letter-spacing="-1"
+    fill="#faf8f4"
+  >RW</text>
+</svg>
