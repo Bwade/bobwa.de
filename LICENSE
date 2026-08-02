@@ -19,11 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-NOTE ON CONTENT: the MIT license above covers the source code. The personal
-content in this repository is not: the resume PDFs, the portrait in
-public/bob-wade.jpg, and the biographical copy in data/content.ts remain the
-property of Bob Wade and are not licensed for reuse. Fork the code, not the
-person.

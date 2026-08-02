@@ -198,3 +198,8 @@ Dark mode is class based. An inline script in `app/layout.tsx` applies the store
 or system preference before first paint, so there is no flash of the wrong theme.
 The toggle writes to `localStorage`. Until someone clicks it, the site follows the
 operating system setting.
+
+## License
+
+The source code is [MIT licensed](LICENSE). The personal content (resume,
+portrait, and biographical copy) is not; see [NOTICE.md](NOTICE.md).
