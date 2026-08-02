@@ -158,7 +158,7 @@ export const content = {
   about: {
     heading: 'About',
     /** One short paragraph. */
-    body: 'Every org I have inherited looked the same on day one: on-call improvised, severity undefined, the team firefighting instead of building. I rebuild that layer first. On-call from scratch to four nines. Interrupts down thirty percent. Release cycles from two months to three weeks. Then I rebuild the organization that owns it, because a system only stays fixed when the people around it are set up to keep it that way. Nineteen years in, ten of them managing, and I still found and run my own companies. That is why I argue for the version that ships.',
+    body: 'Nineteen years in engineering, the last ten in management. I came up through code and design before moving into leadership, and I run orgs the way I would want mine run: clear ownership, real escalation paths, and nobody having to be a hero to keep the lights on. At Button that means Core Engineering and Solutions Engineering, so I own both the platform and the partner relationships depending on it. Outside Button I run Digital Tide, where I have stood up companies end to end. I am most useful somewhere the platform matters commercially and the organization around it needs rebuilding at the same time.',
   },
 
   whatIDo: {
