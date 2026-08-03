@@ -11,6 +11,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "chars": "node --experimental-strip-types --no-warnings scripts/check-chars.mts",
+    "resume": "node --experimental-strip-types --no-warnings scripts/resume/build.mts",
     "verify": "npm run typecheck && npm run lint && npm run format:check && npm run chars && npm run build"
   },
   "dependencies": {
