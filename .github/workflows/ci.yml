@@ -30,6 +30,12 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
+      # Em dashes, smart quotes and invisible characters read as AI-generated
+      # and end up in the resume PDFs. Cheap to catch here, awkward to catch
+      # after something has been sent to an employer.
+      - name: Check characters
+        run: npm run chars
+
       - name: Build (static export)
         run: npm run build
 

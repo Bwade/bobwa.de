@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     'out/**',
     'build/**',
     'next-env.d.ts',
+    // Job-search data, gitignored and never published.
+    'applications/**',
   ]),
 ]);
 

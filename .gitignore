@@ -44,3 +44,7 @@ next-env.d.ts
 .playwright-mcp/
 *.lighthouseci/
 lh*.json
+
+# job search: never commit application data or tailored output to a public repo
+/applications/
+/build/
