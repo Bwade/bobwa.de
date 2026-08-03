@@ -63,15 +63,15 @@ export default function EdExperience() {
                 )}
 
                 {role.groups?.map((group) => (
-                  <div key={group.label} className="mt-8">
+                  <div key={group.id} className="mt-8">
                     {group.label && <h4 className="ed-label text-ed-accent">{group.label}</h4>}
                     <ul className="mt-4 space-y-3">
                       {group.bullets.map((bullet) => (
                         <li
-                          key={bullet}
+                          key={bullet.id}
                           className="text-ed-ink/70 before:bg-ed-ink/35 relative max-w-prose pl-6 leading-relaxed before:absolute before:top-[0.7em] before:left-0 before:h-px before:w-3"
                         >
-                          {bullet}
+                          {bullet.text}
                         </li>
                       ))}
                     </ul>

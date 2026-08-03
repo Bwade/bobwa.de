@@ -55,7 +55,7 @@ export default function Experience() {
               )}
 
               {role.groups?.map((group) => (
-                <div key={group.label} className="mt-6">
+                <div key={group.id} className="mt-6">
                   {group.label && (
                     <h4 className="text-accent text-[0.7rem] font-medium tracking-[0.16em] uppercase">
                       {group.label}
@@ -64,10 +64,10 @@ export default function Experience() {
                   <ul className="mt-3 space-y-2.5">
                     {group.bullets.map((bullet) => (
                       <li
-                        key={bullet}
+                        key={bullet.id}
                         className="text-ink-muted before:bg-rule-strong relative max-w-prose pl-5 leading-relaxed before:absolute before:top-[0.7em] before:left-0 before:h-px before:w-2.5"
                       >
-                        {bullet}
+                        {bullet.text}
                       </li>
                     ))}
                   </ul>
