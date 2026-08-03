@@ -51,6 +51,14 @@ function roleMeta(company: string, location: string, dates: string): string {
   return [company, location, dates].filter(Boolean).join(' | ');
 }
 
+/** The ATS variant prints its text verbatim, so expectations are the source. */
+export function expectedAtsStrings(doc: ResumeDoc): string[] {
+  return [
+    doc.profile,
+    ...doc.roles.flatMap((r) => r.groups.flatMap((g) => g.bullets.map((b) => b.text))),
+  ];
+}
+
 export function renderAts(doc: ResumeDoc): string {
   const sections: string[] = [];
 

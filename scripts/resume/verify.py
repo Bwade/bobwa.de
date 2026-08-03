@@ -36,7 +36,12 @@ def allowed(ch, ascii_only):
 
 
 def normalise(s):
-    return re.sub(r'\s+', ' ', s).strip()
+    s = re.sub(r'\s+', ' ', s).strip()
+    # A line broken at an existing hyphen extracts as "AI- augmented". That is a
+    # rendering artifact, not missing content, so rejoin it before comparing.
+    # Only where a letter precedes the hyphen and a lowercase letter follows, so
+    # genuine spaced hyphens such as "2013 - 2014" are left alone.
+    return re.sub(r'(?<=[A-Za-z])-\s+(?=[a-z])', '-', s)
 
 
 def main():
@@ -78,16 +83,10 @@ def main():
 
     if args.expect_text:
         with open(args.expect_text, encoding='utf-8') as fh:
-            spec = json.load(fh)
+            expected = json.load(fh)
         haystack = normalise(text)
-        missing = []
-        for role in spec.get('roles', []):
-            for group in role.get('groups', []):
-                for bullet in group.get('bullets', []):
-                    if normalise(bullet['text']) not in haystack:
-                        missing.append(f"{role['id']}/{group['id']}/{bullet['id']}")
-        if spec.get('profile') and normalise(spec['profile']) not in haystack:
-            missing.append('profile')
+        missing = [s for s in expected if normalise(s) not in haystack]
+        missing = [s[:70] + ('...' if len(s) > 70 else '') for s in missing]
         if missing:
             failures.append(
                 'content missing from the PDF (clipped or dropped):\n    '

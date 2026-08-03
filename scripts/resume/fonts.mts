@@ -9,9 +9,10 @@
  */
 
 import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const DIR = fileURLToPath(new URL('fonts/', import.meta.url));
+const DIR = fileURLToPath(new URL('./fonts/', import.meta.url));
 
 const FACES = [
   { family: 'Inter', file: 'Inter-Regular.woff2', weight: 400 },
@@ -25,7 +26,7 @@ let cached: string | null = null;
 export function fontFaceCss(): string {
   if (cached !== null) return cached;
   cached = FACES.map(({ family, file, weight }) => {
-    const base64 = readFileSync(new URL(file, DIR)).toString('base64');
+    const base64 = readFileSync(join(DIR, file)).toString('base64');
     return (
       `@font-face{font-family:'${family}';font-style:normal;font-weight:${weight};` +
       `font-display:block;src:url(data:font/woff2;base64,${base64}) format('woff2')}`

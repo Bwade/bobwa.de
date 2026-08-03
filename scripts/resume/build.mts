@@ -18,7 +18,8 @@ import { fileURLToPath } from 'node:url';
 import { printToPdf } from './chrome.mts';
 import { formatViolations, scanMarkup, scanText } from './hygiene.mts';
 import { allProse, buildDoc, type ResumeDoc, type Tailor } from './model.mts';
-import { renderAts } from './render/ats.mts';
+import { expectedAtsStrings, renderAts } from './render/ats.mts';
+import { expectedStrings, renderDesigned } from './render/designed.mts';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 
@@ -66,6 +67,12 @@ function checkDocument(label: string, doc: ResumeDoc, html: string, strictAscii:
   if (prose.length > 0) console.error(formatViolations(`${label} (content)`, prose));
   if (markup.length > 0) console.error(formatViolations(`${label} (markup)`, markup));
   throw new Error(`${label}: ${prose.length + markup.length} disallowed characters`);
+}
+
+/** What verify.py asserts is present in the printed PDF. */
+function writeExpectations(workDir: string, name: string, strings: string[]): void {
+  mkdirSync(workDir, { recursive: true });
+  writeFileSync(join(workDir, `${name}.expect.json`), JSON.stringify(strings, null, 2), 'utf8');
 }
 
 async function emit(
@@ -122,12 +129,18 @@ async function main(): Promise<void> {
     const html = renderAts(doc);
     checkDocument('ats', doc, html, true);
     const name = tailor ? 'resume-ats' : 'Robert_Wade_Resume_ATS';
+    writeExpectations(workDir, name, expectedAtsStrings(doc));
     const pdf = await emit(name, html, outDir, workDir, args);
     if (pdf) written.push(pdf);
   }
 
   if (kinds.includes('designed')) {
-    console.log('  designed: not implemented yet');
+    const html = renderDesigned(doc);
+    checkDocument('designed', doc, html, false);
+    const name = tailor ? 'resume' : 'Robert_Wade_Resume';
+    writeExpectations(workDir, name, expectedStrings(doc));
+    const pdf = await emit(name, html, outDir, workDir, args);
+    if (pdf) written.push(pdf);
   }
 
   for (const path of written) {
