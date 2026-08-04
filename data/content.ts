@@ -335,8 +335,11 @@ export const content = {
             bullets: [
               {
                 id: 'through-managers',
-                text: 'Built the team I now run and lead through managers, not only ICs: a Solutions Engineering leader on the director track reports to me directly. Raised the hiring bar, authored the career-growth ladder and design-review process, and sponsored a PERM labor certification end to end.',
-                emphasis: ['lead through managers, not only ICs', 'PERM labor certification'],
+                text: 'Inherited Core Engineering when my manager left, built Solutions Engineering from scratch, and hired into both. I lead through managers, not only ICs: a Solutions Engineering leader on the director track reports to me directly. Raised the hiring bar, authored the career-growth ladder and design-review process, and sponsored a PERM labor certification end to end.',
+                emphasis: [
+                  'built Solutions Engineering from scratch',
+                  'lead through managers, not only ICs',
+                ],
               },
               {
                 id: 'posttap',
