@@ -161,9 +161,9 @@ export const content = {
       {
         area: 'On-call',
         before:
-          'Improvised. No severity model, no postmortems, and a team spending its week firefighting instead of building.',
+          'A rotation that worked, but had never been tested at the scale the platform was heading for.',
         after:
-          'Rebuilt from nothing. 99.99% sustained, MTTR down, and the platform held through its biggest traffic days of the year without anyone pulling an all-nighter.',
+          '99.99% sustained and MTTR down, with the platform held through its biggest traffic days of the year and nobody pulling an all-nighter to do it.',
       },
       {
         area: 'Partner support',
@@ -246,11 +246,11 @@ export const content = {
               },
               {
                 id: 'super-bowl',
-                text: "Incident commander through Fetch's Super Bowl, holding the platform at 2.6x its planned peak with errors within normal limits. Rebuilt on-call, severity, and blameless postmortems from scratch, sustaining 99.99% uptime and cutting MTTR.",
+                text: "Own on-call and incident response for the core platform, sustaining 99.99% uptime and cutting MTTR across severity, escalation, and blameless postmortems. Held the platform at 2.6x its planned peak through Fetch's Super Bowl with errors within normal limits.",
                 emphasis: [
+                  'sustaining 99.99% uptime',
+                  '2.6x its planned peak',
                   "Fetch's Super Bowl",
-                  '2.6x its planned peak with errors within normal limits',
-                  '99.99% uptime',
                 ],
               },
               {
@@ -291,13 +291,13 @@ export const content = {
             bullets: [
               {
                 id: 'support-function',
-                text: "Stood up Button's partner-support function from scratch, taking support from 100% ad hoc (Slack DMs and email, no ownership or routing) to a structured, SLA-backed operation.",
-                emphasis: ['100% ad hoc'],
+                text: 'There was no partner-support function at Button before me. I made the case to leadership, secured the budget and tooling, and led the engineer who built it, taking support from 100% ad hoc (Slack DMs and email, no ownership or routing) to a structured, SLA-backed operation.',
+                emphasis: ['no partner-support function at Button before me', '100% ad hoc'],
               },
               {
                 id: 'zendesk-model',
-                text: 'Architected the Salesforce to Zendesk to Jira model, with Zendesk as the source of truth for routing, prioritization, and SLAs, and formed a Support Engineering team to own it.',
-                emphasis: ['Salesforce to Zendesk to Jira'],
+                text: 'Set the direction for the Salesforce to Zendesk to Jira model and steered the engineer who designed it, with Zendesk as the source of truth for routing, prioritization, and SLAs. Formed the Support Engineering team that owns it.',
+                emphasis: ['Salesforce to Zendesk to Jira', 'Formed the Support Engineering team'],
               },
               {
                 id: 'tiered-slas',
@@ -658,7 +658,7 @@ export const content = {
      * introduces a person, this one opens a pitch.
      */
     profile:
-      "Senior Engineering Manager at Button owning two engineering functions, Core Engineering and Solutions Engineering, and 13 engineers behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. 19 years in engineering, 10+ in management. I take over unstable orgs and leave behind reliable, automated systems: rebuilt on-call to 99.99% uptime, held the platform through a Super Bowl at 2.6x its planned peak with errors flat, and run delivery increasingly on AI-augmented workflows. Also found and run commerce businesses end to end, from engineering and product to brand and design.",
+      "Senior Engineering Manager at Button owning two engineering functions, Core Engineering and Solutions Engineering, and 13 engineers behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. 19 years in engineering, 10+ in management. I own the platform other teams depend on and keep it dependable: on-call held at 99.99% uptime, a Super Bowl absorbed at 2.6x planned peak with errors flat, release cycles cut from two months to three weeks, and delivery running increasingly on AI-augmented workflows. Also found and run commerce businesses end to end, from engineering and product to brand and design.",
     /** Reusable scaffold only. Cover letter bodies are per application and live outside this repo. */
     letter: {
       signoff: 'Sincerely,',

@@ -48,18 +48,17 @@ function emphasize(text: string, spans: string[]): string {
 }
 
 const CSS = `
-@page { size: 8.5in 11in; margin: 0; }
+/* Margins on @page, not padding on a container, so every page gets them. The
+   previous resume put padding on a single element and let Chrome fragment it,
+   which is why page two started flush against the paper edge. */
+@page { size: 8.5in 11in; margin: 0.42in 0.55in 0.5in; }
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 * { box-sizing: border-box; }
 body { margin: 0; font-family: Inter, sans-serif; color: #17191c; }
 
-.page {
-  width: 8.5in; height: 11in;
-  padding: 0.4in 0.5in 0.34in;
-  overflow: hidden;
-  position: relative;
-}
-.page + .page { border-top: 0 solid transparent; }
+/* Page one is a designed, fixed-height sheet. Everything after it flows and
+   paginates naturally, so the resume runs as long as the content needs. */
+.sheet { height: calc(11in - 0.92in); overflow: hidden; break-after: page; }
 
 /* Header */
 .head { display: flex; justify-content: space-between; align-items: flex-start; }
@@ -83,20 +82,9 @@ body { margin: 0; font-family: Inter, sans-serif; color: #17191c; }
   color: #5b616b; margin-top: 2pt; line-height: 1.3;
 }
 
-/* Two columns */
+/* Page one columns */
 .cols { display: flex; gap: 0.3in; margin-top: 11pt; }
 .side { width: 2.22in; flex: 0 0 2.22in; }
-.page-2 .side { width: 1.5in; flex: 0 0 1.5in; }
-/* No header on page two, so it starts higher. */
-.page-2 { padding-top: 0.32in; }
-.page-2 .cols { margin-top: 0; }
-/* Page two carries the tail of the experience section and no header, so it
-   runs tighter than page one to keep the resume to two pages. */
-.page-2 .role { margin-top: 7pt; }
-.page-2 .role + .role { padding-top: 6pt; }
-.page-2 ul.bullets li { margin-bottom: 2.1pt; }
-.page-2 .glabel { margin: 5pt 0 2pt; }
-.page-2 .rsummary { margin-bottom: 3.5pt; }
 .main { flex: 1 1 auto; }
 
 .sec { font-size: 8pt; letter-spacing: 0.2em; text-transform: uppercase; margin: 0 0 5pt; }
@@ -107,12 +95,12 @@ body { margin: 0; font-family: Inter, sans-serif; color: #17191c; }
   letter-spacing: 0.13em; text-transform: uppercase; margin: 0 0 3pt;
 }
 .side .items { font-size: 8.1pt; line-height: 11.6pt; color: #17191c; margin: 0; }
-.side .compact { font-size: 8.1pt; line-height: 11.4pt; margin: 0 0 5pt; }
-.side .compact .t { display: block; }
-.side .compact .m { display: block; color: #5b616b; }
 .side .group + .group { margin-top: 9pt; }
+.compact { font-size: 8.1pt; line-height: 11.4pt; margin: 0 0 5pt; }
+.compact .t { display: block; }
+.compact .m { display: block; color: #5b616b; }
 
-/* Main column */
+/* Experience */
 .profile { font-size: 8.5pt; line-height: 11.5pt; margin: 0; }
 .role { margin-top: 9pt; }
 .role + .role { border-top: 0.6pt solid #dcd8ce; padding-top: 8pt; }
@@ -128,6 +116,8 @@ ul.bullets { margin: 0; padding: 0; list-style: none; }
 ul.bullets li {
   font-size: 8.15pt; line-height: 10.2pt; margin: 0 0 2.6pt;
   padding-left: 9pt; position: relative;
+  /* Keep a bullet whole rather than orphaning a line across a page break. */
+  break-inside: avoid;
 }
 /* Drawn, not a glyph. A bullet character would fall outside the latin subset,
    so Chrome would fetch a system font for that one mark and embed it as Type3. */
@@ -136,6 +126,15 @@ ul.bullets li::before {
   width: 3pt; height: 3pt; background: #0d5c63;
 }
 b { font-weight: 600; }
+
+/* Continuation pages: single column, and headings stay with their bullets. */
+.flow .role { break-inside: auto; }
+.flow .rtitle, .flow .glabel { break-after: avoid; }
+.flow .rmeta, .flow .rsummary { break-before: avoid; }
+
+/* Closing row: the compact sections, full width, at the very end. */
+.tail { display: flex; gap: 0.3in; margin-top: 14pt; break-inside: avoid; }
+.tail > div { flex: 1 1 0; }
 `;
 
 /** Where each column stops on page one. */
@@ -243,7 +242,7 @@ export function renderDesigned(doc: ResumeDoc, pageBreak: PageBreak = DEFAULT_BR
   const expertise = doc.expertise.slice(0, 6);
   const stack = doc.expertise.slice(6);
 
-  const [mainOne, mainTwo] = splitRoles(doc.roles, pageBreak.main);
+  const [sheetRoles, flowRoles] = splitRoles(doc.roles, pageBreak.main);
 
   const header = `<div class="head">
     <div>
@@ -266,50 +265,45 @@ export function renderDesigned(doc: ResumeDoc, pageBreak: PageBreak = DEFAULT_BR
     )
     .join('')}</div>`;
 
-  const sideOne =
+  const sidebar =
     `<p class="sec">Expertise</p><div class="secrule"></div>` +
     expertise.map((g) => sideBlock(g.label, g.items)).join('') +
     `<div class="block"><p class="sec" style="margin-top:12pt">Stack</p><div class="secrule"></div>` +
     stack.map((g) => sideBlock(g.label, g.items)).join('') +
     `</div>`;
 
-  const sideTwo =
-    `<p class="sec">${esc(doc.education.label)}</p><div class="secrule"></div>` +
-    compact(doc.education.items) +
-    `<div class="block"><p class="sec" style="margin-top:12pt">${esc(
-      doc.certifications.label,
-    )}</p><div class="secrule"></div>` +
-    compact(doc.certifications.items) +
-    `</div><div class="block"><p class="sec" style="margin-top:12pt">${esc(
-      doc.earlier.label,
-    )}</p><div class="secrule"></div>${compact(doc.earlier.items)}</div>`;
-
-  const pageOne = `<section class="page">
+  const sheet = `<section class="sheet">
     ${header}
     <div class="cols">
-      <aside class="side">${sideOne}</aside>
+      <aside class="side">${sidebar}</aside>
       <main class="main">
         <p class="sec">Profile</p><div class="secrule"></div>
         <p class="profile">${marks(esc(doc.profile))}</p>
-        <p class="sec" style="margin-top:13pt">Experience</p><div class="secrule"></div>
-        ${mainOne.map((r) => renderRole(r, r.groups, true)).join('')}
+        <p class="sec" style="margin-top:12pt">Experience</p><div class="secrule"></div>
+        ${sheetRoles.map((r) => renderRole(r, r.groups, true)).join('')}
       </main>
     </div>
   </section>`;
 
-  const continuing = mainTwo.length > 0 && mainTwo[0]?.id === mainOne.at(-1)?.id;
-  const pageTwo = `<section class="page page-2">
-    <div class="cols">
-      <aside class="side">${sideTwo}</aside>
-      <main class="main">
-        ${mainTwo.map((r, i) => renderRole(r, r.groups, !(i === 0 && continuing))).join('')}
-      </main>
-    </div>
-  </section>`;
+  // A role split across the boundary keeps going without repeating its header.
+  const continuing = flowRoles.length > 0 && flowRoles[0]?.id === sheetRoles.at(-1)?.id;
+
+  const tail = [doc.education, doc.certifications, doc.earlier]
+    .map(
+      (section) =>
+        `<div><p class="sec">${esc(section.label)}</p><div class="secrule"></div>` +
+        `${compact(section.items)}</div>`,
+    )
+    .join('');
+
+  const flow = `<div class="flow">
+    ${flowRoles.map((r, i) => renderRole(r, r.groups, !(i === 0 && continuing))).join('')}
+    <div class="tail">${tail}</div>
+  </div>`;
 
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>${esc(doc.legalName)}</title>
 <style>${fontFaceCss()}
 ${CSS}</style></head>
-<body>${pageOne}${pageTwo}</body></html>`;
+<body>${sheet}${flow}</body></html>`;
 }

@@ -78,23 +78,24 @@ function writeExpectations(workDir: string, name: string, strings: string[]): vo
 }
 
 /** True when every expected string survived into the printed PDF. */
-function fits(pdfPath: string, expectPath: string): boolean {
+function fits(pdfPath: string, expectPath: string): number | null {
   try {
-    execFileSync(
+    const out = execFileSync(
       'python3',
+      // No page count: the resume runs as long as the content needs. The only
+      // question here is whether the designed first sheet clipped anything.
       [
         join(ROOT, 'scripts', 'resume', 'verify.py'),
         pdfPath,
-        '--pages',
-        '2',
         '--expect-text',
         expectPath,
+        '--print-fill',
       ],
-      { stdio: 'ignore' },
+      { encoding: 'utf8' },
     );
-    return true;
+    return Number(/fill=(\d+)/.exec(out)?.[1] ?? 0);
   } catch {
-    return false;
+    return null;
   }
 }
 
@@ -164,9 +165,10 @@ async function main(): Promise<void> {
     writeExpectations(workDir, name, expectedStrings(doc));
 
     // Reordering or dropping groups moves where page one fills up, so a fixed
-    // split point stops being right the moment an application tailors
-    // anything. Try each candidate and keep the last one that fits, which
-    // fills page one as far as it will go without clipping.
+    // split stops being right the moment an application tailors anything.
+    // Every candidate that clips nothing is valid, so choose between them on
+    // how full the last page ends up: a final page holding two lines looks
+    // like a mistake even when the content is correct.
     const first = doc.roles[0];
     const candidates =
       first && !args.htmlOnly
@@ -174,31 +176,32 @@ async function main(): Promise<void> {
         : [DEFAULT_BREAK.main];
 
     let chosen: string | null = null;
-    let lastPdf: string | null = null;
+    let bestFill = -1;
     for (const main of candidates) {
       const html = renderDesigned(doc, { ...DEFAULT_BREAK, main });
       checkDocument('designed', doc, html, false);
       const pdf = await emit(name, html, outDir, workDir, args);
       if (!pdf) break;
-      const ok = fits(pdf, join(workDir, `${name}.expect.json`));
-      if (process.env.RESUME_DEBUG) console.log(`    try ${main}: ${ok ? 'fits' : 'no'}`);
-      if (ok) {
+      const fill = fits(pdf, join(workDir, `${name}.expect.json`));
+      if (process.env.RESUME_DEBUG) {
+        console.log(`    try ${main}: ${fill === null ? 'clips' : `ok, last page ${fill}% full`}`);
+      }
+      if (fill !== null && fill > bestFill) {
+        bestFill = fill;
         chosen = main;
-        lastPdf = pdf;
       } else if (chosen !== null) {
-        // Past the point where it fits; re-render the last good split.
-        const good = renderDesigned(doc, { ...DEFAULT_BREAK, main: chosen });
-        lastPdf = await emit(name, good, outDir, workDir, args);
+        // Filling page one further can only move content off the last page, so
+        // once the last page stops getting fuller the optimum is behind us.
         break;
       }
     }
     if (chosen === null) {
-      throw new Error(
-        'designed: no page split fits the content on two pages.\n' +
-          '  Drop a bullet or two in the application file, or shorten a summary.',
-      );
+      throw new Error('designed: no split fills page one without clipping it.');
     }
-    console.log(`  designed: page break after ${chosen}`);
+    // Re-render the winner, since the loop left the last candidate on disk.
+    const finalHtml = renderDesigned(doc, { ...DEFAULT_BREAK, main: chosen });
+    const lastPdf = await emit(name, finalHtml, outDir, workDir, args);
+    console.log(`  designed: first sheet ends after ${chosen}`);
     if (lastPdf) written.push(lastPdf);
   }
 

@@ -53,6 +53,11 @@ def main():
     ap.add_argument('--pages', type=int, help='exact page count')
     ap.add_argument('--max-kb', type=int)
     ap.add_argument('--sheet', help='write a contact sheet PNG here')
+    ap.add_argument(
+        '--print-fill',
+        action='store_true',
+        help='print how full the last page is, for choosing a balanced split',
+    )
     args = ap.parse_args()
 
     doc = fitz.open(args.pdf)
@@ -121,6 +126,17 @@ def main():
             x += p.width + gap
         sheet.save(args.sheet)
         print(f'  contact sheet: {args.sheet}')
+
+    if args.print_fill:
+        last = doc[doc.page_count - 1]
+        ys = [
+            sp['bbox'][3]
+            for b in last.get_text('dict')['blocks']
+            for l in b.get('lines', [])
+            for sp in l['spans']
+            if sp['text'].strip()
+        ]
+        print(f'fill={(max(ys) / last.rect.y1 * 100) if ys else 0:.0f}')
 
     label = os.path.basename(args.pdf)
     if failures:
