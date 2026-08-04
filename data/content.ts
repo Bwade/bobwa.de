@@ -185,7 +185,7 @@ export const content = {
   about: {
     heading: 'About',
     /** One short paragraph. */
-    body: 'Nineteen years in engineering, the last ten in management. I came up through code and design before moving into leadership, and I run orgs the way I would want mine run: clear ownership, real escalation paths, and nobody having to be a hero to keep the lights on. What I deliver is a platform people can trust and a team that can keep it that way without me. I have done it at consumer scale, through Prime Day and a Super Bowl, and again for my own companies where I stood the whole business up end to end. I am most useful somewhere the platform matters commercially and the organization around it needs rebuilding at the same time.',
+    body: 'Nineteen years in engineering, the last ten in management. I came up through code and design before moving into leadership, and I run orgs the way I would want mine run: clear ownership, real escalation paths, and nobody having to be a hero to keep the lights on. What I deliver is a platform people can trust and a team that can keep it that way without me. I have done it at consumer scale and again for my own companies where I stood the whole business up end to end. I am most useful somewhere the platform matters commercially and the organization around it needs rebuilding at the same time.',
   },
 
   whatIDo: {
@@ -246,12 +246,8 @@ export const content = {
               },
               {
                 id: 'super-bowl',
-                text: "Own on-call and incident response for the core platform, sustaining 99.99% uptime and cutting MTTR across severity, escalation, and blameless postmortems. Held the platform at 2.6x its planned peak through Fetch's Super Bowl with errors within normal limits.",
-                emphasis: [
-                  'sustaining 99.99% uptime',
-                  '2.6x its planned peak',
-                  "Fetch's Super Bowl",
-                ],
+                text: 'Own on-call and incident response for the core platform, sustaining 99.99% uptime and cutting MTTR across severity, escalation, and blameless postmortems.',
+                emphasis: ['sustaining 99.99% uptime'],
               },
               {
                 id: 'interrupts',
@@ -661,7 +657,7 @@ export const content = {
      * introduces a person, this one opens a pitch.
      */
     profile:
-      "Senior Engineering Manager at Button leading two engineering functions through managers as well as ICs: Core Engineering and Solutions Engineering, 13 engineers, and the platform behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. 19 years in engineering, 10+ in management, and 25 engineers across seven teams before that at Centene. I own the platform other teams depend on and keep it dependable: on-call held at 99.99% uptime, a Super Bowl absorbed at 2.6x planned peak with errors flat, and core engineering interrupts cut about 30% by routing support work away from the team. Delivery now runs on AI-augmented workflows, with about 45% of shipped code AI written and engineer reviewed. Also act as product owner for my org, holding the roadmap, backlog, and the call on what gets built.",
+      "Senior Engineering Manager at Button leading two engineering functions through managers as well as ICs: Core Engineering and Solutions Engineering, 13 engineers, and the platform behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. 19 years in engineering, 10+ in management, and 25 engineers across seven teams before that at Centene. I own the platform other teams depend on and keep it dependable: on-call held at 99.99% uptime and core engineering interrupts cut about 30% by routing support work away from the team. Delivery now runs on AI-augmented workflows, with about 45% of shipped code AI written and engineer reviewed. Also act as product owner for my org, holding the roadmap, backlog, and the call on what gets built.",
     /** Reusable scaffold only. Cover letter bodies are per application and live outside this repo. */
     letter: {
       signoff: 'Sincerely,',
