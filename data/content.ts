@@ -274,14 +274,14 @@ export const content = {
                 ],
               },
               {
-                id: 'llm-tooling',
-                text: "Sponsored internal read-only LLM tooling, a Sam's Club order debugger and a CSV validator, that cut manual triage load. Built with tightly scoped tools to prevent hallucination.",
-                emphasis: ['read-only LLM tooling'],
-              },
-              {
                 id: 'ai-delivery',
                 text: 'Championed AI-augmented delivery. Org-wide, Claude-attributed code reached about 45% of lines shipped and roughly two thirds of merged PRs.',
                 emphasis: ['about 45% of lines shipped'],
+              },
+              {
+                id: 'llm-tooling',
+                text: "Sponsored internal read-only LLM tooling, a Sam's Club order debugger and a CSV validator, that cut manual triage load. Built with tightly scoped tools to prevent hallucination.",
+                emphasis: ['read-only LLM tooling'],
               },
             ],
           },
@@ -334,9 +334,9 @@ export const content = {
             label: 'Organization and delivery leadership',
             bullets: [
               {
-                id: 'em-pm-scrum',
-                text: 'Act as engineering manager, product manager, and scrum lead for my org: own the roadmap, backlog prioritization, quarterly capacity planning, and the full Agile cadence across multiple squads, plus the feasibility gate between Revenue, Product, and Engineering on what actually gets built.',
-                emphasis: ['engineering manager, product manager, and scrum lead'],
+                id: 'through-managers',
+                text: 'Built the team I now run and lead through managers, not only ICs: a Solutions Engineering leader on the director track reports to me directly. Raised the hiring bar, authored the career-growth ladder and design-review process, and sponsored a PERM labor certification end to end.',
+                emphasis: ['lead through managers, not only ICs', 'PERM labor certification'],
               },
               {
                 id: 'posttap',
@@ -344,9 +344,9 @@ export const content = {
                 emphasis: ['PostTap'],
               },
               {
-                id: 'through-managers',
-                text: 'Built the team I now run and lead through managers, not only ICs: a Solutions Engineering leader on the director track reports to me directly. Raised the hiring bar, authored the career-growth ladder and design-review process, and sponsored a PERM labor certification end to end.',
-                emphasis: ['lead through managers, not only ICs', 'PERM labor certification'],
+                id: 'em-pm-scrum',
+                text: 'Act as engineering manager, product manager, and scrum lead for my org: own the roadmap, backlog prioritization, quarterly capacity planning, and the full Agile cadence across multiple squads, plus the feasibility gate between Revenue, Product, and Engineering on what actually gets built.',
+                emphasis: ['engineering manager, product manager, and scrum lead'],
               },
             ],
           },
@@ -658,7 +658,7 @@ export const content = {
      * introduces a person, this one opens a pitch.
      */
     profile:
-      "Senior Engineering Manager at Button owning two engineering functions, Core Engineering and Solutions Engineering, and 13 engineers behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. 19 years in engineering, 10+ in management. I own the platform other teams depend on and keep it dependable: on-call held at 99.99% uptime, a Super Bowl absorbed at 2.6x planned peak with errors flat, release cycles cut from two months to three weeks, and delivery running increasingly on AI-augmented workflows. Also found and run commerce businesses end to end, from engineering and product to brand and design.",
+      "Senior Engineering Manager at Button leading two engineering functions through managers as well as ICs: Core Engineering and Solutions Engineering, 13 engineers, and the platform behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. 19 years in engineering, 10+ in management, and 25 engineers across seven teams before that at Centene. I own the platform other teams depend on and keep it dependable: on-call held at 99.99% uptime, a Super Bowl absorbed at 2.6x planned peak with errors flat, and release cycles cut from two months to three weeks. Delivery now runs on AI-augmented workflows, with about 45% of shipped code AI written and engineer reviewed. Also act as product owner for my org, holding the roadmap, backlog, and the call on what gets built.",
     /** Reusable scaffold only. Cover letter bodies are per application and live outside this repo. */
     letter: {
       signoff: 'Sincerely,',
