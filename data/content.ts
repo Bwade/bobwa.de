@@ -271,7 +271,7 @@ export const content = {
               },
               {
                 id: 'ai-delivery',
-                text: 'Championed AI-augmented delivery. Org-wide, Claude-attributed code reached about 45% of lines shipped and roughly two thirds of merged PRs.',
+                text: 'Championed AI-augmented delivery. Org-wide, Claude-attributed code reached about 45% of lines shipped.',
                 emphasis: ['about 45% of lines shipped'],
               },
               {
@@ -315,8 +315,8 @@ export const content = {
               },
               {
                 id: 'onboarding',
-                text: 'Cut enterprise integration onboarding time 30% and raised revenue per integration 20% by standardizing the integration path and removing bespoke per partner engineering.',
-                emphasis: ['30%', '20%'],
+                text: 'Standardized the enterprise integration path and removed bespoke per partner engineering, so a new partner lands on a repeatable process instead of a custom build.',
+                emphasis: ['Standardized the enterprise integration path'],
               },
               {
                 id: 'retail-media',
