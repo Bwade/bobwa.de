@@ -175,9 +175,9 @@ export const content = {
       {
         area: 'Delivery',
         before:
-          'Two month release cycles, core engineering interrupted constantly, and no gate between what was wanted and what was possible.',
+          'Core engineering interrupted constantly, and no gate between what the business wanted and what was actually possible.',
         after:
-          'Three week cycles on staging parity and end to end testing. Interrupts down thirty percent, and a feasibility gate between revenue, product, and engineering.',
+          'Interrupts down thirty percent, two week sprints run end to end, and a feasibility gate between revenue, product, and engineering on what actually gets built.',
       },
     ],
   },
@@ -204,9 +204,9 @@ export const content = {
         icon: 'compass',
       },
       {
-        title: 'Make delivery predictable',
+        title: 'Run the delivery cadence',
         description:
-          'Two month release cycles down to three weeks. A straight answer for the business on what is possible before anything gets promised, so the roadmap survives contact with reality.',
+          'Two week sprints across multiple squads, and I run every ceremony myself: planning, standups, grooming, retros. Plus a straight answer for the business on what is possible before anything gets promised, so the roadmap survives contact with reality.',
         icon: 'plug',
       },
       {
@@ -266,11 +266,11 @@ export const content = {
             bullets: [
               {
                 id: 'order-pipeline',
-                text: "Own Button's order pipeline, the platform's revenue path at 600K+ orders a day. Drove autoscaling, Aurora migrations, and ComStore and Django modernization, and led the release-confidence program (staging parity plus end-to-end testing) that cut release cycles from roughly two months to about three weeks. Backed cost discipline including a single AWS saving of roughly $70K a year.",
+                text: "Own Button's order pipeline, the platform's revenue path at 600K+ orders a day. Drove autoscaling, Aurora migrations, and ComStore and Django modernization, and led the release-confidence program (staging parity plus end-to-end testing) behind it. Backed cost discipline including a single AWS saving of roughly $70K a year.",
                 emphasis: [
                   "order pipeline, the platform's revenue path",
                   'Aurora migrations',
-                  'cut release cycles from roughly two months to about three weeks',
+                  'release-confidence program',
                 ],
               },
               {
@@ -348,7 +348,7 @@ export const content = {
               },
               {
                 id: 'em-pm-scrum',
-                text: 'Act as engineering manager, product manager, and scrum lead for my org: own the roadmap, backlog prioritization, quarterly capacity planning, and the full Agile cadence across multiple squads, plus the feasibility gate between Revenue, Product, and Engineering on what actually gets built.',
+                text: 'Act as engineering manager, product manager, and scrum lead for my org: own the roadmap, backlog prioritization, quarterly capacity planning, and every Agile ceremony across multiple squads on two week sprints, plus the feasibility gate between Revenue, Product, and Engineering on what actually gets built.',
                 emphasis: ['engineering manager, product manager, and scrum lead'],
               },
             ],
@@ -661,7 +661,7 @@ export const content = {
      * introduces a person, this one opens a pitch.
      */
     profile:
-      "Senior Engineering Manager at Button leading two engineering functions through managers as well as ICs: Core Engineering and Solutions Engineering, 13 engineers, and the platform behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. 19 years in engineering, 10+ in management, and 25 engineers across seven teams before that at Centene. I own the platform other teams depend on and keep it dependable: on-call held at 99.99% uptime, a Super Bowl absorbed at 2.6x planned peak with errors flat, and release cycles cut from two months to three weeks. Delivery now runs on AI-augmented workflows, with about 45% of shipped code AI written and engineer reviewed. Also act as product owner for my org, holding the roadmap, backlog, and the call on what gets built.",
+      "Senior Engineering Manager at Button leading two engineering functions through managers as well as ICs: Core Engineering and Solutions Engineering, 13 engineers, and the platform behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. 19 years in engineering, 10+ in management, and 25 engineers across seven teams before that at Centene. I own the platform other teams depend on and keep it dependable: on-call held at 99.99% uptime, a Super Bowl absorbed at 2.6x planned peak with errors flat, and core engineering interrupts cut about 30% by routing support work away from the team. Delivery now runs on AI-augmented workflows, with about 45% of shipped code AI written and engineer reviewed. Also act as product owner for my org, holding the roadmap, backlog, and the call on what gets built.",
     /** Reusable scaffold only. Cover letter bodies are per application and live outside this repo. */
     letter: {
       signoff: 'Sincerely,',
