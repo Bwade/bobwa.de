@@ -12,6 +12,7 @@
  * there by accident; the output directory is chosen here, not by the caller.
  */
 
+import { execFileSync } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -19,7 +20,8 @@ import { printToPdf } from './chrome.mts';
 import { formatViolations, scanMarkup, scanText } from './hygiene.mts';
 import { allProse, buildDoc, type ResumeDoc, type Tailor } from './model.mts';
 import { expectedAtsStrings, renderAts } from './render/ats.mts';
-import { expectedStrings, renderDesigned } from './render/designed.mts';
+import { DEFAULT_BREAK, expectedStrings, renderDesigned } from './render/designed.mts';
+import { expectedLetterStrings, renderLetter } from './render/letter.mts';
 
 const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 
@@ -75,6 +77,27 @@ function writeExpectations(workDir: string, name: string, strings: string[]): vo
   writeFileSync(join(workDir, `${name}.expect.json`), JSON.stringify(strings, null, 2), 'utf8');
 }
 
+/** True when every expected string survived into the printed PDF. */
+function fits(pdfPath: string, expectPath: string): boolean {
+  try {
+    execFileSync(
+      'python3',
+      [
+        join(ROOT, 'scripts', 'resume', 'verify.py'),
+        pdfPath,
+        '--pages',
+        '2',
+        '--expect-text',
+        expectPath,
+      ],
+      { stdio: 'ignore' },
+    );
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 async function emit(
   name: string,
   html: string,
@@ -101,7 +124,7 @@ async function emit(
 
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
-  const kinds: Kind[] = args.only.length > 0 ? args.only : ['designed', 'ats'];
+  let kinds: Kind[] = args.only.length > 0 ? args.only : ['designed', 'ats'];
 
   let tailor: Tailor | undefined;
   if (args.app !== null) {
@@ -110,6 +133,8 @@ async function main(): Promise<void> {
     };
     tailor = loaded.default;
   }
+
+  if (args.only.length === 0 && tailor?.letter) kinds = [...kinds, 'letter'];
 
   const doc = buildDoc(tailor);
   const workDir = join(ROOT, 'build', 'resume', tailor?.slug ?? 'canonical');
@@ -135,11 +160,56 @@ async function main(): Promise<void> {
   }
 
   if (kinds.includes('designed')) {
-    const html = renderDesigned(doc);
-    checkDocument('designed', doc, html, false);
     const name = tailor ? 'resume' : 'Robert_Wade_Resume';
     writeExpectations(workDir, name, expectedStrings(doc));
-    const pdf = await emit(name, html, outDir, workDir, args);
+
+    // Reordering or dropping groups moves where page one fills up, so a fixed
+    // split point stops being right the moment an application tailors
+    // anything. Try each candidate and keep the last one that fits, which
+    // fills page one as far as it will go without clipping.
+    const first = doc.roles[0];
+    const candidates =
+      first && !args.htmlOnly
+        ? first.groups.map((g) => `${first.id}/${g.id}`)
+        : [DEFAULT_BREAK.main];
+
+    let chosen: string | null = null;
+    let lastPdf: string | null = null;
+    for (const main of candidates) {
+      const html = renderDesigned(doc, { ...DEFAULT_BREAK, main });
+      checkDocument('designed', doc, html, false);
+      const pdf = await emit(name, html, outDir, workDir, args);
+      if (!pdf) break;
+      const ok = fits(pdf, join(workDir, `${name}.expect.json`));
+      if (process.env.RESUME_DEBUG) console.log(`    try ${main}: ${ok ? 'fits' : 'no'}`);
+      if (ok) {
+        chosen = main;
+        lastPdf = pdf;
+      } else if (chosen !== null) {
+        // Past the point where it fits; re-render the last good split.
+        const good = renderDesigned(doc, { ...DEFAULT_BREAK, main: chosen });
+        lastPdf = await emit(name, good, outDir, workDir, args);
+        break;
+      }
+    }
+    if (chosen === null) {
+      throw new Error(
+        'designed: no page split fits the content on two pages.\n' +
+          '  Drop a bullet or two in the application file, or shorten a summary.',
+      );
+    }
+    console.log(`  designed: page break after ${chosen}`);
+    if (lastPdf) written.push(lastPdf);
+  }
+
+  if (kinds.includes('letter')) {
+    if (!tailor?.letter) {
+      throw new Error('a cover letter needs --app <slug> with a letter block');
+    }
+    const html = renderLetter(doc, tailor);
+    checkDocument('letter', doc, html, false);
+    writeExpectations(workDir, 'cover-letter', expectedLetterStrings(tailor));
+    const pdf = await emit('cover-letter', html, outDir, workDir, args);
     if (pdf) written.push(pdf);
   }
 

@@ -163,7 +163,7 @@ export const content = {
         before:
           'Improvised. No severity model, no postmortems, and a team spending its week firefighting instead of building.',
         after:
-          'Rebuilt from nothing. 99.99% sustained, MTTR down, and Prime Day and a Super Bowl held at up to twelve times baseline.',
+          'Rebuilt from nothing. 99.99% sustained, MTTR down, and the platform held through its biggest traffic days of the year without anyone pulling an all-nighter.',
       },
       {
         area: 'Partner support',
@@ -192,28 +192,28 @@ export const content = {
     heading: 'What I do',
     items: [
       {
-        title: 'Platform Reliability & Scale',
+        title: 'Keep the platform up',
         description:
-          'Prime Day at twelve times baseline. A Super Bowl at 2.6x its planned peak, errors flat. I plan for the spike instead of surviving it: capacity, load tests, incident command, and postmortems that actually change something.',
+          'The routing and order pipeline behind $100B+ in commerce, at 99.99% uptime. The part that matters is how: not me on call, but a team that holds it without me.',
         icon: 'activity',
       },
       {
-        title: 'Partner Integrations',
+        title: 'Stop the firefighting',
         description:
-          'Amazon, Walmart, Best Buy, Target, Nike, Marriott, Disney+. I own the technical surface enterprise relationships run on, plus the tiered SLAs and escalation paths that stop every issue becoming a fire drill.',
+          'I take over orgs running on heroics and leave them running on process. Clear ownership, an escalation path people actually use, and engineers who get their week back instead of losing it to interrupts.',
+        icon: 'compass',
+      },
+      {
+        title: 'Make delivery predictable',
+        description:
+          'Two month release cycles down to three weeks. A straight answer for the business on what is possible before anything gets promised, so the roadmap survives contact with reality.',
         icon: 'plug',
       },
       {
-        title: 'AI-Augmented Delivery',
+        title: 'Ship with AI, for real',
         description:
-          'Claude and MCP inside the delivery loop, not bolted onto it. Around 45% of shipped lines and two thirds of merged PRs, with tooling scoped tightly enough that it cannot invent its way into production.',
+          'Not a pilot and not a slide. Around 45% of the code my org ships is AI written, reviewed by engineers, with the tooling scoped tightly enough that it cannot invent its way into production.',
         icon: 'sparkles',
-      },
-      {
-        title: 'Product & Design',
-        description:
-          'I own the feasibility gate between revenue, product, and engineering: roadmap, backlog, quarterly capacity, and the call on what actually gets built. Design literate enough to brief it properly and judge the result.',
-        icon: 'compass',
       },
     ],
   },

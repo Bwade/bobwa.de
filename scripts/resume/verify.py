@@ -39,9 +39,10 @@ def normalise(s):
     s = re.sub(r'\s+', ' ', s).strip()
     # A line broken at an existing hyphen extracts as "AI- augmented". That is a
     # rendering artifact, not missing content, so rejoin it before comparing.
-    # Only where a letter precedes the hyphen and a lowercase letter follows, so
-    # genuine spaced hyphens such as "2013 - 2014" are left alone.
-    return re.sub(r'(?<=[A-Za-z])-\s+(?=[a-z])', '-', s)
+    # Only where a letter sits immediately before the hyphen, so genuine spaced
+    # hyphens such as "2013 - 2014" are left alone. The letter after may be
+    # capital: "post-COVID" breaks as "post- COVID".
+    return re.sub(r'(?<=[A-Za-z])-\s+(?=[A-Za-z])', '-', s)
 
 
 def main():
