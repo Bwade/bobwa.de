@@ -338,6 +338,11 @@ export const content = {
                 ],
               },
               {
+                id: 'process-artifacts',
+                text: 'Established the Agile frameworks and Jira workflows the org runs on, and wrote the runbooks and standard operating procedures global teams work from, so process survives people leaving.',
+                emphasis: ['runbooks and standard operating procedures'],
+              },
+              {
                 id: 'posttap',
                 text: 'Early on, led engineering for the creator link product and ran half the org through the post-COVID rebuild.',
                 emphasis: ['the creator link product'],
