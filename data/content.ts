@@ -399,11 +399,13 @@ export const content = {
         ],
       },
       {
-        id: 'centene-chapter',
+        id: 'centene-manager',
         company: 'Centene Corporation',
-        title: 'IT Manager, Engineering Chapter',
-        dates: 'Jan 2019 - Oct 2021',
+        title: 'Manager, Mobile Application Development, then Member Portal and Mobile Solutions',
+        dates: 'Oct 2016 - Oct 2021',
         location: 'St. Louis, MO',
+        summary:
+          'Five years managing engineers at Centene across two mobile and member-facing orgs, promoted into management from the senior engineering track.',
         groups: [
           {
             id: 'main',
@@ -413,6 +415,16 @@ export const content = {
                 id: 'led-25',
                 text: 'Led 25 engineers across seven cross functional Agile teams delivering member facing web and mobile applications and new health plan implementations.',
                 emphasis: ['25 engineers across seven cross functional Agile teams'],
+              },
+              {
+                id: 'health-assistant',
+                text: 'Built and led the cross functional team that shipped a self service AI health assistant, reducing call center volume, and established the delivery framework for the inherited application.',
+                emphasis: ['self service AI health assistant'],
+              },
+              {
+                id: 'mobile-apps',
+                text: 'Delivered more than 20 mobile applications across iOS and Android, launched care management in the Florida market, and standardized mobile build, release, and compliance for state contracts.',
+                emphasis: ['more than 20 mobile applications'],
               },
               {
                 id: 'process-layer',
@@ -428,10 +440,10 @@ export const content = {
         ],
       },
       {
-        id: 'centene-mobile',
+        id: 'centene-engineer',
         company: 'Centene Corporation',
-        title: 'IT Manager, Member AI & Mobile, then Senior Application Software Engineer',
-        dates: 'Sep 2014 - Jan 2019',
+        title: 'Senior Application Software Engineer',
+        dates: 'Sep 2014 - Oct 2016',
         location: 'St. Louis, MO',
         groups: [
           {
@@ -439,18 +451,9 @@ export const content = {
             label: '',
             bullets: [
               {
-                id: 'health-assistant',
-                text: 'Built and led the cross functional team that shipped a self service AI health assistant, reducing call center volume, and established the SDLC framework for the inherited application.',
-                emphasis: ['self service AI health assistant'],
-              },
-              {
-                id: 'mobile-apps',
-                text: 'Delivered more than 20 mobile applications across iOS and Android, launched care management in the Florida market, and standardized mobile build, release, and compliance for state contracts.',
-                emphasis: ['more than 20 mobile applications'],
-              },
-              {
                 id: 'oauth',
-                text: 'As Senior Engineer: shipped OAuth 2.0 via API Gateway, migrated the org from SVN to Git, and mentored about 10 engineers.',
+                text: 'Shipped OAuth 2.0 through the API gateway, migrated the organization from SVN to Git, and mentored about 10 engineers. Promoted into management from this role.',
+                emphasis: ['Promoted into management from this role'],
               },
             ],
           },
