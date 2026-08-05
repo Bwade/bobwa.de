@@ -177,7 +177,7 @@ export const content = {
         before:
           'Core engineering interrupted constantly, and no gate between what the business wanted and what was actually possible.',
         after:
-          'Interrupts down thirty percent, two week sprints run end to end, and a feasibility gate between revenue, product, and engineering on what actually gets built.',
+          'Interrupts routed away from core engineering, two week sprints run end to end, and a feasibility gate between revenue, product, and engineering on what actually gets built.',
       },
     ],
   },
@@ -241,8 +241,8 @@ export const content = {
               },
               {
                 id: 'prime-day',
-                text: "Lead Amazon Prime Day readiness year over year, Button's largest revenue event: capacity planning, load testing, and Go/No-Go across the core services, scaling infrastructure up to 12x baseline and proving headroom for each larger ramp at 100% uptime.",
-                emphasis: ['Amazon Prime Day readiness', 'up to 12x baseline'],
+                text: "Lead Amazon Prime Day readiness year over year, Button's largest revenue event: traffic modeling, load testing, and Go/No-Go across the core services. Planned and load-tested the jump from an 80 RPS baseline to a 1,200 RPS peak, with no downtime across the event window.",
+                emphasis: ['Amazon Prime Day readiness', 'an 80 RPS baseline to a 1,200 RPS peak'],
               },
               {
                 id: 'super-bowl',
@@ -251,8 +251,8 @@ export const content = {
               },
               {
                 id: 'interrupts',
-                text: 'Cut core engineering interrupts about 30% by standing up a Support to Data to Core escalation flow, converting reactive firefighting into protected delivery capacity.',
-                emphasis: ['core engineering interrupts about 30%'],
+                text: 'Cut core engineering interrupts by standing up a Support to Data to Core escalation flow: first-level triage in Zendesk, the data team absorbing impact analysis, and self-serve tooling for the most common partner questions. Reactive firefighting became protected delivery capacity.',
+                emphasis: ['Cut core engineering interrupts'],
               },
             ],
           },
@@ -262,7 +262,7 @@ export const content = {
             bullets: [
               {
                 id: 'order-pipeline',
-                text: "Own Button's order pipeline, the platform's revenue path at 600K+ orders a day. Drove autoscaling, Aurora migrations, and ComStore and Django modernization, and led the release-confidence program (staging parity plus end-to-end testing) behind it. Backed cost discipline including a single AWS saving of roughly $70K a year.",
+                text: "Own Button's order pipeline, the platform's revenue path at 600K+ orders a day. Drove autoscaling, Aurora migrations, and ComStore and Django modernization, and led the release-confidence program (staging parity plus end-to-end testing) behind it. Backed the right-sizing that took Kokiri from 400 instances to 15 and Boomerang from 400 to 130, cutting CPU per task from 80% to 25% and peak-event scaling cost from roughly $20K a month to about $7.5K.",
                 emphasis: [
                   "order pipeline, the platform's revenue path",
                   'Aurora migrations',
@@ -657,7 +657,7 @@ export const content = {
      * introduces a person, this one opens a pitch.
      */
     profile:
-      "Senior Engineering Manager at Button leading two engineering functions through managers as well as ICs: Core Engineering and Solutions Engineering, 13 engineers, and the platform behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. 19 years in engineering, 10+ in management, and 25 engineers across seven teams before that at Centene. I own the platform other teams depend on and keep it dependable: on-call held at 99.99% uptime and core engineering interrupts cut about 30% by routing support work away from the team. Delivery now runs on AI-augmented workflows, with about 45% of shipped code AI written and engineer reviewed. Also act as product owner for my org, holding the roadmap, backlog, and the call on what gets built.",
+      "Senior Engineering Manager at Button leading two engineering functions through managers as well as ICs: Core Engineering and Solutions Engineering, 13 engineers, and the platform behind $100B+ in mobile commerce for Amazon, Walmart, Uber, Lyft, Fetch, and Sam's Club. 19 years in engineering, 10+ in management, and 25 engineers across seven teams before that at Centene. I own the platform other teams depend on and keep it dependable: on-call held at 99.99% uptime and core engineering interrupts cut by routing support triage away from the team. Delivery now runs on AI-augmented workflows, with about 45% of shipped code AI written and engineer reviewed. Also act as product owner for my org, holding the roadmap, backlog, and the call on what gets built.",
     /** Reusable scaffold only. Cover letter bodies are per application and live outside this repo. */
     letter: {
       signoff: 'Sincerely,',
