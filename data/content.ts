@@ -401,11 +401,12 @@ export const content = {
       {
         id: 'centene-manager',
         company: 'Centene Corporation',
-        title: 'Manager, Mobile Application Development, then Member Portal and Mobile Solutions',
+        title:
+          'Manager: Mobile Application Development, then Member AI Assistant, then Engineering Chapter',
         dates: 'Oct 2016 - Oct 2021',
         location: 'St. Louis, MO',
         summary:
-          'Five years managing engineers at Centene across two mobile and member-facing orgs, promoted into management from the senior engineering track.',
+          'Five years managing engineers across three orgs at Centene, promoted from the senior engineering track into running the mobile practice I had built.',
         groups: [
           {
             id: 'main',
@@ -418,17 +419,22 @@ export const content = {
               },
               {
                 id: 'health-assistant',
-                text: 'Built and led the cross functional team that shipped a self service AI health assistant, reducing call center volume, and established the delivery framework for the inherited application.',
+                text: 'Built and led the cross functional team that shipped a self service AI health assistant, cutting call center volume. Onboarded a newly acquired team into enterprise operations and delivered an enterprise payment solution alongside it.',
                 emphasis: ['self service AI health assistant'],
               },
               {
                 id: 'mobile-apps',
-                text: 'Delivered more than 20 mobile applications across iOS and Android, launched care management in the Florida market, and standardized mobile build, release, and compliance for state contracts.',
+                text: 'Delivered more than 20 mobile applications across iOS and Android, launched care management in the Florida market, and standardized mobile build, release, and compliance so the business could bid on new state contracts.',
                 emphasis: ['more than 20 mobile applications'],
               },
               {
                 id: 'process-layer',
                 text: 'Built the standard engineering process layer for all web and mobile matrix teams, and defined the metrics leadership used for staffing and prioritization.',
+              },
+              {
+                id: 'hiring-growth',
+                text: 'Hired and managed a mix of full time and contingent staff against a cost target, and built career plans and training programs for direct reports.',
+                emphasis: ['career plans and training programs'],
               },
               {
                 id: 'assessment-framework',
@@ -451,9 +457,26 @@ export const content = {
             label: '',
             bullets: [
               {
+                id: 'built-mobile-practice',
+                text: 'Stood up mobile engineering at Centene as an individual contributor: department processes, the move from SVN to Git, automated developer environment setup, and Angular and Ionic approved into the stack. Promoted into management to run the practice I had built.',
+                emphasis: [
+                  'Stood up mobile engineering at Centene',
+                  'Promoted into management to run the practice I had built',
+                ],
+              },
+              {
+                id: 'release-management',
+                text: 'Owned release management for more than 20 internal and consumer applications shipping through MDM, TestFlight, the App Store, and Google Play.',
+                emphasis: ['more than 20 internal and consumer applications'],
+              },
+              {
+                id: 'hiring-mentoring',
+                text: 'Ran hiring for the team before I led it: interviewed and brought on about 10 full time engineers plus contingent staff, and mentored the junior developers.',
+                emphasis: ['about 10 full time engineers'],
+              },
+              {
                 id: 'oauth',
-                text: 'Shipped OAuth 2.0 through the API gateway, migrated the organization from SVN to Git, and mentored about 10 engineers. Promoted into management from this role.',
-                emphasis: ['Promoted into management from this role'],
+                text: 'Shipped OAuth 2.0 through the API gateway and managed the third party vendor integrations the platform depended on.',
               },
             ],
           },
