@@ -110,10 +110,10 @@ export const content = {
 
   hero: {
     name: 'Bob Wade',
-    title: 'Engineering leadership: platform reliability, partner integrations, delivery',
+    title: 'Engineering leadership: multi-team orgs, platform reliability, delivery',
     /** Two or three sentences. Keep it tight. This is the whole pitch. */
     blurb:
-      'I make platforms dependable, and the teams around them capable of keeping them that way without me. Two engineering functions, thirteen engineers, and the routing, attribution and order pipeline that $100B+ in commerce moves through.',
+      'Ten years managing engineers, across mobile, member platforms, and the commerce infrastructure $100B+ moves through. I lead through managers, run multi-team orgs across product, revenue and support, and leave behind platforms that stay up without me.',
     /**
      * Shown under the hero CTAs and fed into the structured data. Naming the
      * metro as well as the town is deliberate: recruiters search "Nashville",
@@ -146,8 +146,8 @@ export const content = {
   impact: [
     { value: '$100B+', label: 'commerce moved' },
     { value: '99.99%', label: 'uptime, sustained' },
-    { value: '130M+', label: 'Amazon clicks a month' },
-    { value: '13 / 2', label: 'engineers, functions owned' },
+    { value: '10 yrs', label: 'leading engineers' },
+    { value: '25 / 7', label: 'largest team, teams led' },
   ],
 
   /**
