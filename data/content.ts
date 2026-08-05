@@ -262,7 +262,7 @@ export const content = {
             bullets: [
               {
                 id: 'order-pipeline',
-                text: "Own Button's order pipeline, the platform's revenue path at 600K+ orders a day. Drove autoscaling, Aurora migrations, and ComStore and Django modernization, and led the release-confidence program (staging parity plus end-to-end testing) behind it. Backed the right-sizing that took Kokiri from 400 instances to 15 and Boomerang from 400 to 130, cutting CPU per task from 80% to 25% and peak-event scaling cost from roughly $20K a month to about $7.5K.",
+                text: "Own Button's order pipeline, the platform's revenue path at 600K+ orders a day. Drove autoscaling, Aurora migrations, and modernization of the partnership configuration service, and led the release-confidence program (staging parity plus end-to-end testing) behind it. Backed the right-sizing that took the link-generation service from 400 instances to 15 and the click-redirect service from 400 to 130, cutting CPU per task from 80% to 25% and peak-event scaling cost from roughly $20K a month to about $7.5K.",
                 emphasis: [
                   "order pipeline, the platform's revenue path",
                   'Aurora migrations',
@@ -308,7 +308,7 @@ export const content = {
             bullets: [
               {
                 id: 'integrations',
-                text: "Solutions Engineering landed and scaled integrations across a who's-who of commerce, travel, and marketplace: Amazon, Walmart, Best Buy, Target, Sam's Club, Nike, Lululemon, Puma, Samsung, Expedia, Marriott, Uber One, Lyft, Disney+, and StubHub, including the Sam's Club Glass and mParticle migration.",
+                text: "Solutions Engineering landed and scaled integrations across a who's-who of commerce, travel, and marketplace: Amazon, Walmart, Best Buy, Target, Sam's Club, Nike, Lululemon, Puma, Samsung, Expedia, Marriott, Uber One, Lyft, Disney+, and StubHub, including a full platform migration for Sam's Club.",
                 emphasis: [
                   "Amazon, Walmart, Best Buy, Target, Sam's Club, Nike, Lululemon, Puma, Samsung, Expedia, Marriott, Uber One, Lyft, Disney+, and StubHub",
                 ],
@@ -339,8 +339,8 @@ export const content = {
               },
               {
                 id: 'posttap',
-                text: "Early on, led Button's PostTap product engineering and ran half the org through the post-COVID rebuild.",
-                emphasis: ['PostTap'],
+                text: 'Early on, led engineering for the creator link product and ran half the org through the post-COVID rebuild.',
+                emphasis: ['the creator link product'],
               },
               {
                 id: 'em-pm-scrum',
