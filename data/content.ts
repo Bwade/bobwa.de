@@ -602,23 +602,31 @@ export const content = {
     heading: 'Selected work',
     items: [
       {
+        name: 'Digital Tide',
+        description:
+          'My studio, and the umbrella over everything below. I stand companies up end to end: entity, cloud, DNS, email and identity, the deployment pipeline, the application, the brand, and the go to market. Engineering and design both, because handing off half of it is how things end up incoherent. Run on the standards clients inherit: Linear first delivery, GitHub Actions CI, and Slack automation.',
+        tags: ['Studio', 'Founder', 'Full-stack', 'Brand'],
+        href: 'https://digitalti.de',
+        marks: [{ src: '/marks/digital-tide.webp', alt: 'Digital Tide', width: 640, height: 502 }],
+      },
+      {
         name: 'Sanbar',
         description:
-          'The client had an idea and nothing else. I built the whole technical foundation: GCP and AWS, DNS, email and identity, deployment pipeline, and the production site.',
+          'A client with an idea and nothing else. I built the entire technical foundation: GCP and AWS, DNS, email and identity, the deployment pipeline, and the production site. They went from a name to a running business without hiring an engineer.',
         tags: ['Infrastructure', 'GCP', 'AWS'],
         href: 'https://sanbar.us',
       },
       {
         name: 'That Paleo Chick',
         description:
-          'Not just the site, the business. AWS, transactional and marketing email, social content produced and scheduled automatically through Postiz, and affiliate monetization. It runs itself.',
+          'Not just the site, the whole business. AWS infrastructure, transactional and marketing email, affiliate monetization, and social content produced and scheduled automatically. Six months in it runs without me touching it, which was the point.',
         tags: ['E-commerce', 'Automation', 'AWS'],
         href: 'https://thatpaleochick.com',
       },
       {
         name: 'Greedy',
         description:
-          'Ran the full site redesign end to end, from scope through vendors to launch. Own social and paid acquisition, including a competitive playbook built from live Meta Ad Library teardowns and AI generated video creative.',
+          'Took the full site redesign from scope through vendor selection to launch, then kept the growth side: social and paid acquisition run off a competitive playbook built from live Meta Ad Library teardowns, with AI generated video creative shipping faster than an agency could brief it.',
         tags: ['Program management', 'Growth', 'Paid media'],
         // TODO: add a public link when there is one.
         href: null,
@@ -626,29 +634,21 @@ export const content = {
       {
         name: 'Charter',
         description:
-          'An invoicing product, designed and built solo: auth, billing entities, invoice generation, and payment tracking.',
+          'An invoicing product, designed and built solo. Auth, billing entities, invoice generation, payment tracking, the schema underneath and the interface on top. Every product decision was mine to make and mine to live with.',
         tags: ['Product', 'Next.js', 'Clerk'],
         href: 'https://charter.digitalti.de',
       },
       {
         name: 'Brand & product design',
         description:
-          'Brand and logo for Digital Tide and That Paleo Chick, plus the UI and UX for the apps I have shipped. I design what I build.',
+          'The brand and logo for Digital Tide and That Paleo Chick, plus the UI and UX for everything I ship. Rare in an engineering leader and useful more often than it should be: I can brief a designer properly, and judge the result honestly. The mark here is the actual work.',
         tags: ['Brand', 'UI/UX', 'Figma'],
         href: null,
         // Both marks are shown in one colour so they read as a set against the
         // panel rather than dragging two unrelated brand palettes into it.
         marks: [
-          { src: '/marks/digital-tide.webp', alt: 'Digital Tide', width: 640, height: 502 },
           { src: '/marks/that-paleo-chick.svg', alt: 'That Paleo Chick', width: 475, height: 603 },
         ],
-      },
-      {
-        name: 'Digital Tide',
-        description:
-          'My own firm, run on the standards clients inherit: Linear first delivery, GitHub Actions CI, and Slack automation.',
-        tags: ['Studio', 'Consulting', 'Full-stack'],
-        href: 'https://digitalti.de',
       },
     ] satisfies WorkItem[],
   },
